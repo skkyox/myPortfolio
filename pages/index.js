@@ -94,17 +94,31 @@ export default function Portfolio() {
       </Head>
 
       {/* --- NAVIGATION BAR --- */}
-      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-primary/20 sticky top-0 z-50">
+      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-primary/20 sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Logo Théo" className="w-12 h-12 rounded-lg shadow-lg" />
-            <span className="text-lg font-black text-primary">THÉO</span>
+          <div className="flex items-center gap-3 group cursor-pointer">
+            <div className="relative overflow-hidden rounded-lg">
+              <img src="/logo.png" alt="Logo Théo" className="w-12 h-12 rounded-lg shadow-lg group-hover:scale-110 transition duration-300" />
+            </div>
+            <span className="text-lg font-black bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent group-hover:from-yellow-300 group-hover:to-primary transition duration-300">THÉO</span>
           </div>
-          <div className="hidden md:flex items-center gap-6 text-sm text-gray-400">
-            <a href="#skills" className="hover:text-primary transition">Stack</a>
-            <a href="#experience" className="hover:text-primary transition">Expérience</a>
-            <a href="#education" className="hover:text-primary transition">Formation</a>
-            <a href="#contact" className="hover:text-primary transition">Contact</a>
+          <div className="hidden md:flex items-center gap-8 text-sm">
+            <a href="#skills" className="relative text-gray-300 font-medium group/link">
+              Stack
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#experience" className="relative text-gray-300 font-medium group/link">
+              Expérience
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#education" className="relative text-gray-300 font-medium group/link">
+              Formation
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#contact" className="relative text-gray-300 font-medium group/link">
+              Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            </a>
           </div>
         </div>
       </nav>
