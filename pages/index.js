@@ -37,11 +37,18 @@ export default function Portfolio() {
   // Expériences basées sur le CV
   const experiences = [
     {
-      role: "Créateur Freelance - Yoxu",
-      company: "Fondateur",
+      role: "Fondateur - Yoxu",
+      company: "Projet Personnel",
       period: "Juin 2024 - Aujourd'hui",
       tech: "React Native, Expo, Firebase, UI/UX Design",
-      desc: "Développement d'une application mobile innovante facilitant l'organisation de dîners privés entre hôtes. Responsable de l'architecture, du design UX/UX et de la gestion complète du projet de la conception à la mise en production."
+      desc: "Développement d'une plateforme mobile innovante pour l'organisation de dîners privés entre hôtes. Gestion complète du projet : conception UX/UI, architecture technique, développement backend et déploiement. Application facilitant la mise en relation et la logistique événementielle."
+    },
+    {
+      role: "Développeur Freelance - Plot et Terrasse",
+      company: "Freelance",
+      period: "2024",
+      tech: "PrestaShop, PHP, MySQL, Customization",
+      desc: "Création et intégration d'une boutique e-commerce PrestaShop complète pour Plot et Terrasse. Développement du catalogue produits, système de paiement sécurisé, gestion des stocks, et optimisation SEO. Design responsive et ergonomie centrée sur l'expérience client pour maximiser les conversions."
     },
     {
       role: "Développeur Mobile",
