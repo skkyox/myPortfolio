@@ -93,12 +93,29 @@ export default function Portfolio() {
         <meta name="description" content={`Portfolio de ${profile.name}, ${profile.title} à Lyon.`} />
       </Head>
 
+      {/* --- NAVIGATION BAR --- */}
+      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-primary/20 sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Logo Théo" className="w-12 h-12 rounded-lg shadow-lg" />
+            <span className="text-lg font-black text-primary">THÉO</span>
+          </div>
+          <div className="hidden md:flex items-center gap-6 text-sm text-gray-400">
+            <a href="#skills" className="hover:text-primary transition">Stack</a>
+            <a href="#experience" className="hover:text-primary transition">Expérience</a>
+            <a href="#education" className="hover:text-primary transition">Formation</a>
+            <a href="#contact" className="hover:text-primary transition">Contact</a>
+          </div>
+        </div>
+      </nav>
+
       {/* --- HERO SECTION --- */}
       <header className="bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="flex-shrink-0">
-              <img src="/profile.jpg" alt={profile.name} className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg border-4 border-primary" />
+            <div className="flex-shrink-0 relative">
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary via-yellow-300 to-primary rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+              <img src="/profile.jpg" alt={profile.name} className="relative w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg border-4 border-primary" />
             </div>
             <div className="flex-1">
               <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
@@ -130,7 +147,7 @@ export default function Portfolio() {
       </header>
 
       {/* --- SKILLS SECTION --- */}
-      <section className="py-16 bg-gray-800 border-t border-gray-700">
+      <section id="skills" className="py-16 bg-gray-800 border-t border-gray-700">
         <div className="max-w-5xl mx-auto px-6">
           <div className="mb-8">
             <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Stack Technique</h3>
@@ -148,7 +165,7 @@ export default function Portfolio() {
       </section>
 
       {/* --- EXPERIENCE SECTION --- */}
-      <section className="py-16 bg-gray-900">
+      <section id="experience" className="py-16 bg-gray-900">
         <div className="max-w-5xl mx-auto px-6">
           <div className="mb-10">
             <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Expériences Professionnelles</h3>
@@ -179,7 +196,7 @@ export default function Portfolio() {
       </section>
 
       {/* --- EDUCATION & INTERESTS --- */}
-      <section className="py-16 bg-gray-800">
+      <section id="education" className="py-16 bg-gray-800">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           
           {/* Formation */}
@@ -289,7 +306,7 @@ export default function Portfolio() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 border-t border-primary/30">
+      <footer id="contact" className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 border-t border-primary/30">
         <div className="max-w-5xl mx-auto px-6">
           {/* Top Section */}
           <div className="mb-12">
