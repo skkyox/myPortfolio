@@ -76,27 +76,34 @@ export default function Portfolio() {
       {/* --- HERO SECTION --- */}
       <header className="bg-white shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-          <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">{profile.name}</h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8">{profile.title}</p>
-          
-          <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-8">
-            <span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location}</span>
-            <span className="flex items-center gap-2"><FaEnvelope /> {profile.email}</span>
-            <span className="flex items-center gap-2"><FaPhone /> {profile.phone}</span>
-          </div>
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="flex-shrink-0">
+              <img src="/profile.jpg" alt={profile.name} className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
+              <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">{profile.name}</h1>
+              <p className="text-xl md:text-2xl text-gray-600 mb-8">{profile.title}</p>
+              
+              <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-8">
+                <span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location}</span>
+                <span className="flex items-center gap-2"><FaEnvelope /> {profile.email}</span>
+                <span className="flex items-center gap-2"><FaPhone /> {profile.phone}</span>
+              </div>
 
-          <p className="text-lg text-gray-700 max-w-2xl leading-relaxed mb-8">
-            {profile.bio}
-          </p>
+              <p className="text-lg text-gray-700 max-w-2xl leading-relaxed mb-8">
+                {profile.bio}
+              </p>
 
-          <div className="flex gap-4">
-            <a href={`mailto:${profile.email}`} className="bg-primary hover:opacity-90 text-secondary px-6 py-3 rounded-lg font-medium transition">
-              Me Contacter
-            </a>
-            <button className="border border-gray-300 hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium transition">
-              Télécharger CV
-            </button>
+              <div className="flex gap-4">
+                <a href={`mailto:${profile.email}`} className="bg-primary hover:opacity-90 text-secondary px-6 py-3 rounded-lg font-medium transition">
+                  Me Contacter
+                </a>
+                <button className="border border-gray-300 hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium transition">
+                  Télécharger CV
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </header>
