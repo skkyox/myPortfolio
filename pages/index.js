@@ -67,31 +67,31 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
+    <div className="min-h-screen bg-gray-900 text-white font-sans">
       <Head>
         <title>{`${profile.name} - ${profile.title}`}</title>
         <meta name="description" content={`Portfolio de ${profile.name}, ${profile.title} à Lyon.`} />
       </Head>
 
       {/* --- HERO SECTION --- */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
             <div className="flex-shrink-0">
-              <img src="/profile.jpg" alt={profile.name} className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg" />
+              <img src="/profile.jpg" alt={profile.name} className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg border-4 border-primary" />
             </div>
             <div className="flex-1">
               <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
-              <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">{profile.name}</h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8">{profile.title}</p>
+              <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4">{profile.name}</h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-8">{profile.title}</p>
               
-              <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-8">
+              <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-8">
                 <span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location}</span>
                 <span className="flex items-center gap-2"><FaEnvelope /> {profile.email}</span>
                 <span className="flex items-center gap-2"><FaPhone /> {profile.phone}</span>
               </div>
 
-              <p className="text-lg text-gray-700 max-w-2xl leading-relaxed mb-8">
+              <p className="text-lg text-gray-300 max-w-2xl leading-relaxed mb-8">
                 {profile.bio}
               </p>
 
@@ -99,7 +99,7 @@ export default function Portfolio() {
                 <a href={`mailto:${profile.email}`} className="bg-primary hover:opacity-90 text-secondary px-6 py-3 rounded-lg font-medium transition">
                   Me Contacter
                 </a>
-                <button className="border border-gray-300 hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium transition">
+                <button className="border border-primary hover:bg-primary hover:text-secondary text-primary px-6 py-3 rounded-lg font-medium transition">
                   Télécharger CV
                 </button>
               </div>
@@ -109,14 +109,14 @@ export default function Portfolio() {
       </header>
 
       {/* --- SKILLS SECTION --- */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="py-16 bg-gray-800 border-t border-gray-700">
         <div className="max-w-5xl mx-auto px-6">
-          <h3 className="text-2xl font-bold mb-8 text-gray-900">Stack Technique</h3>
+          <h3 className="text-2xl font-bold mb-8 text-white">Stack Technique</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {skills.map((skill, idx) => (
-              <div key={idx} className="flex flex-col items-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
+              <div key={idx} className="flex flex-col items-center p-4 bg-gray-700 rounded-xl hover:shadow-md hover:bg-gray-600 transition">
                 <div className="text-4xl mb-3">{skill.icon}</div>
-                <span className="font-medium text-sm text-center">{skill.name}</span>
+                <span className="font-medium text-sm text-center text-gray-200">{skill.name}</span>
               </div>
             ))}
           </div>
@@ -124,23 +124,23 @@ export default function Portfolio() {
       </section>
 
       {/* --- EXPERIENCE SECTION --- */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-900">
         <div className="max-w-5xl mx-auto px-6">
-          <h3 className="text-2xl font-bold mb-10 text-gray-900">Expériences Professionnelles</h3>
+          <h3 className="text-2xl font-bold mb-10 text-white">Expériences Professionnelles</h3>
           <div className="space-y-8">
             {experiences.map((exp, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300">
+              <div key={idx} className="bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl hover:border-primary transition duration-300">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900">{exp.role}</h4>
+                    <h4 className="text-xl font-bold text-white">{exp.role}</h4>
                     <span className="text-primary font-medium">{exp.company}</span>
                   </div>
-                  <span className="text-sm text-gray-400 bg-gray-100 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
+                  <span className="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
                 </div>
-                <p className="text-gray-600 mb-4">{exp.desc}</p>
+                <p className="text-gray-300 mb-4">{exp.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {exp.tech.split(', ').map((t, i) => (
-                    <span key={i} className="text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded border border-gray-200">
+                    <span key={i} className="text-xs font-semibold text-gray-200 bg-gray-700 px-2 py-1 rounded border border-gray-600">
                       {t}
                     </span>
                   ))}
@@ -152,19 +152,19 @@ export default function Portfolio() {
       </section>
 
       {/* --- EDUCATION & INTERESTS --- */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-800">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           
           {/* Formation */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-gray-900">Formation</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white">Formation</h3>
             <div className="space-y-6 border-l-2 border-primary/30 pl-6">
               {education.map((edu, idx) => (
                 <div key={idx} className="relative">
-                  <div className="absolute -left-[31px] top-1 w-4 h-4 bg-primary rounded-full border-4 border-white"></div>
-                  <h4 className="font-bold text-gray-900">{edu.degree}</h4>
-                  <p className="text-gray-600">{edu.school}</p>
-                  <span className="text-sm text-gray-400">{edu.year}</span>
+                  <div className="absolute -left-[31px] top-1 w-4 h-4 bg-primary rounded-full border-4 border-gray-800"></div>
+                  <h4 className="font-bold text-white">{edu.degree}</h4>
+                  <p className="text-gray-400">{edu.school}</p>
+                  <span className="text-sm text-gray-500">{edu.year}</span>
                 </div>
               ))}
             </div>
@@ -172,17 +172,17 @@ export default function Portfolio() {
 
           {/* Intérêts & Langues */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-gray-900">Intérêts & Langues</h3>
-            <div className="bg-gray-50 p-6 rounded-xl">
+            <h3 className="text-2xl font-bold mb-6 text-white">Intérêts & Langues</h3>
+            <div className="bg-gray-700 p-6 rounded-xl">
               <div className="mb-6">
-                <h4 className="font-bold text-gray-700 mb-2">Langues</h4>
-                <p className="text-gray-600">Français (Natif) • Anglais • Espagnol</p>
+                <h4 className="font-bold text-white mb-2">Langues</h4>
+                <p className="text-gray-300">Français (Natif) • Anglais • Espagnol</p>
               </div>
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Loisirs</h4>
+                <h4 className="font-bold text-white mb-2">Loisirs</h4>
                 <div className="flex flex-wrap gap-3">
                   {["Handball", "E-sport", "Échecs"].map((hobby, i) => (
-                    <span key={i} className="bg-white px-4 py-2 rounded-lg shadow-sm text-sm font-medium text-gray-600">
+                    <span key={i} className="bg-gray-600 px-4 py-2 rounded-lg shadow-sm text-sm font-medium text-gray-100">
                       {hobby}
                     </span>
                   ))}
@@ -194,7 +194,7 @@ export default function Portfolio() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-secondary text-white py-12">
+      <footer className="bg-gray-950 text-white py-12 border-t border-gray-700">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-bold mb-6">Prêt à lancer un projet ?</h2>
           <p className="text-gray-400 mb-8">Disponible en freelance ou CDI sur Lyon et ses environs.</p>

@@ -2,11 +2,13 @@
 
 ## Overview
 
-This is a personal portfolio website for Théo Le Sommier, a full-stack web and mobile developer. The project is built with Next.js (using Pages Router) and styled with Tailwind CSS. It serves as a digital resume showcasing professional experience, technical skills, and contact information in a modern, responsive single-page application format.
+This is a personal portfolio website for Théo Le Sommier, a full-stack web and mobile developer. The project is built with Next.js (using Pages Router) and styled with Tailwind CSS with a modern dark mode design. It serves as a digital resume showcasing professional experience, technical skills, and contact information in a professional, responsive single-page application format.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preference: Dark mode with custom brand colors (gold #FBD400 primary, dark gray #2d2d2d secondary).
+Includes profile picture in hero section.
 
 ## System Architecture
 
@@ -24,11 +26,13 @@ Preferred communication style: Simple, everyday language.
 - Pros: Easy to understand and modify; single source of truth
 - Cons: Less maintainable as content grows; harder to reuse components
 
-**Styling: Tailwind CSS Utility-First**
+**Styling: Tailwind CSS Utility-First with Dark Mode**
 - Uses Tailwind CSS for all styling with utility classes directly in JSX
 - Configuration: Standard Tailwind setup with PostCSS processing
 - Content paths configured for `pages/` and `components/` directories
-- Rationale: Rapid development, consistent design system, no custom CSS required
+- Color scheme: Dark mode (gray-900/gray-800 backgrounds, white text)
+- Brand colors: Primary gold (#FBD400) for accents, dark gray (#2d2d2d) secondary
+- Rationale: Rapid development, consistent design system, professional dark aesthetic
 - Trade-off: HTML becomes verbose with many class names; learning curve for Tailwind syntax
 
 **State Management**
@@ -51,11 +55,20 @@ Preferred communication style: Simple, everyday language.
 - Custom port configuration: Runs on port 5000 instead of default 3000
 - Host binding: `0.0.0.0` for external accessibility (Replit requirement)
 - Scripts: Standard Next.js dev/build/start workflow
+- Workflow configured: "npm run dev" on port 5000
 
 **Build Process**
 - Next.js handles bundling, optimization, and static generation
-- Tailwind CSS processed through PostCSS during build
+- Tailwind CSS v3 (downgraded from v4 for Turbopack compatibility)
+- PostCSS processing for autoprefixing and styling
 - No custom webpack or build configurations
+
+**Design Features**
+- Profile picture integrated in hero section with gold border
+- Responsive layout: profile picture left + text right on desktop, stacked on mobile
+- Dark gradient header for visual hierarchy
+- Hover effects on cards and buttons with smooth transitions
+- Professional spacing and typography throughout
 
 ## External Dependencies
 
