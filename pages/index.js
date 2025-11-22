@@ -9,9 +9,10 @@ import {
   FaPhp, 
   FaSymfony, 
   FaVuejs, 
-  FaMobileAlt 
+  FaMobileAlt ,
+
 } from 'react-icons/fa';
-import { SiExpo, SiLaravel, SiAdobe, SiMysql } from 'react-icons/si';
+import { SiExpo, SiLaravel, SiAdobe, SiMysql, SiNextdotjs } from 'react-icons/si';
 
 export default function Portfolio() {
   
@@ -21,15 +22,14 @@ export default function Portfolio() {
     title: "Développeur Web et Mobile",
     location: "Lyon, 69007",
     phone: "07-86-45-16-43",
-    email: "lesommier-theo@gmail.com",
-    bio: "Développeur Fullstack de 26 ans passionné par la création d'applications performantes. Fort de 6 ans d'expérience, je maîtrise l'écosystème React (Web & Native) ainsi que les frameworks PHP robustes comme Symfony.",
+    email: "lesommier.theo@gmail.com",
+    bio: "Développeur de 27 ans expert dans l'écosystème JavaScript. Fort de 6 ans d'expérience, je conçois des applications mobiles et web ultra-performantes grâce à React Native et Next.js. Passionné par l'innovation, j'intègre désormais l'Intelligence Artificielle au cœur de mes projets pour repousser les limites de l'expérience utilisateur.",
   };
 
   const skills = [
     { name: "React & React Native", icon: <FaReact className="text-blue-400" /> },
     { name: "VueJs & NuxtJS", icon: <FaVuejs className="text-green-500" /> },
-    { name: "PHP & Symfony", icon: <FaSymfony className="text-black" /> },
-    { name: "Laravel", icon: <SiLaravel className="text-red-600" /> },
+    { name: "Next.js", icon: <SiNextdotjs className="text-white-500" /> },
     { name: "Design (Adobe XD)", icon: <SiAdobe className="text-pink-600" /> },
     { name: "Mobile (Expo)", icon: <SiExpo className="text-gray-800" /> },
   ];
