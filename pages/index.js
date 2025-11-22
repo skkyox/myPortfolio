@@ -118,9 +118,9 @@ export default function Portfolio() {
           <h3 className="text-2xl font-bold mb-8 text-white">Stack Technique</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {skills.map((skill, idx) => (
-              <div key={idx} className="flex flex-col items-center p-4 bg-gray-700 rounded-xl hover:shadow-md hover:bg-gray-600 transition">
+              <div key={idx} className="flex flex-col items-center justify-center h-32 p-4 bg-gray-700 rounded-xl hover:shadow-md hover:bg-gray-600 transition">
                 <div className="text-4xl mb-3">{skill.icon}</div>
-                <span className="font-medium text-sm text-center text-gray-200">{skill.name}</span>
+                <span className="font-medium text-sm text-center text-gray-200 line-clamp-2">{skill.name}</span>
               </div>
             ))}
           </div>
