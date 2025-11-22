@@ -95,13 +95,17 @@ export default function Portfolio() {
                 {profile.bio}
               </p>
 
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 <a href={`mailto:${profile.email}`} className="bg-primary hover:opacity-90 text-secondary px-6 py-3 rounded-lg font-medium transition">
                   Me Contacter
                 </a>
                 <button className="border border-primary hover:bg-primary hover:text-secondary text-primary px-6 py-3 rounded-lg font-medium transition">
                   Télécharger CV
                 </button>
+                <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                  <FaLinkedin />
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>
