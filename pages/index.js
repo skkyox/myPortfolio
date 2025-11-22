@@ -94,51 +94,75 @@ export default function Portfolio() {
       </Head>
 
       {/* --- NAVIGATION BAR --- */}
-      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-primary/20 sticky top-0 z-50">
+      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 backdrop-blur-md border-b border-primary/30 shadow-2xl sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Logo Théo" className="w-12 h-12 rounded-lg shadow-lg" />
-            <span className="text-lg font-black text-primary">THÉO</span>
+          <div className="flex items-center gap-3 group cursor-pointer">
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-yellow-300 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              <img src="/logo.png" alt="Logo Théo" className="relative w-12 h-12 rounded-lg shadow-lg group-hover:shadow-xl group-hover:shadow-primary/50 transition duration-300" />
+            </div>
+            <span className="text-xl font-black bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent animate-glow">THÉO</span>
           </div>
-          <div className="hidden md:flex items-center gap-6 text-sm text-gray-400">
-            <a href="#skills" className="hover:text-primary transition">Stack</a>
-            <a href="#experience" className="hover:text-primary transition">Expérience</a>
-            <a href="#education" className="hover:text-primary transition">Formation</a>
-            <a href="#contact" className="hover:text-primary transition">Contact</a>
+          <div className="hidden md:flex items-center gap-8 text-sm">
+            <a href="#skills" className="relative text-gray-400 hover:text-primary transition group">
+              Stack
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#experience" className="relative text-gray-400 hover:text-primary transition group">
+              Expérience
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#education" className="relative text-gray-400 hover:text-primary transition group">
+              Formation
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#contact" className="relative text-gray-400 hover:text-primary transition group">
+              Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover:w-full transition-all duration-300"></span>
+            </a>
           </div>
         </div>
       </nav>
 
       {/* --- HERO SECTION --- */}
-      <header className="bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
+      <header className="relative bg-gradient-to-b from-gray-800 to-gray-900 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        </div>
+        
+        <div className="relative max-w-5xl mx-auto px-6 py-16 md:py-24">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="flex-shrink-0 relative">
-              <div className="absolute -inset-1 bg-gradient-to-br from-primary via-yellow-300 to-primary rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-              <img src="/profile.jpg" alt={profile.name} className="relative w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg border-4 border-primary" />
+            <div className="flex-shrink-0 relative group">
+              <div className="absolute -inset-2 bg-gradient-to-br from-primary via-yellow-300 to-primary rounded-2xl blur-2xl opacity-60 group-hover:opacity-100 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary to-yellow-400 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
+              <img src="/profile.jpg" alt={profile.name} className="relative w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-2xl border-4 border-primary group-hover:shadow-2xl group-hover:shadow-primary/80 transition duration-300" />
             </div>
             <div className="flex-1">
-              <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
-              <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4">{profile.name}</h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8">{profile.title}</p>
+              <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2 animate-slide-down">Portfolio</h2>
+              <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-primary to-yellow-300 bg-clip-text text-transparent mb-4 animate-slide-down" style={{animationDelay: '0.1s'}}>
+                {profile.name}
+              </h1>
+              <p className="text-xl md:text-2xl bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent font-bold mb-8 animate-slide-down" style={{animationDelay: '0.2s'}}>{profile.title}</p>
               
-              <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-8">
-                <span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location}</span>
-                <span className="flex items-center gap-2"><FaEnvelope /> {profile.email}</span>
-                <span className="flex items-center gap-2"><FaPhone /> {profile.phone}</span>
+              <div className="flex flex-wrap gap-6 text-sm text-gray-300 mb-8 animate-slide-down" style={{animationDelay: '0.3s'}}>
+                <span className="flex items-center gap-2 hover:text-primary transition"><FaMapMarkerAlt className="text-primary" /> {profile.location}</span>
+                <span className="flex items-center gap-2 hover:text-primary transition"><FaEnvelope className="text-primary" /> {profile.email}</span>
+                <span className="flex items-center gap-2 hover:text-primary transition"><FaPhone className="text-primary" /> {profile.phone}</span>
               </div>
 
-              <p className="text-lg text-gray-300 max-w-2xl leading-relaxed mb-8">
+              <p className="text-lg text-gray-300 max-w-2xl leading-relaxed mb-8 animate-slide-down" style={{animationDelay: '0.4s'}}>
                 {profile.bio}
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 animate-slide-down" style={{animationDelay: '0.5s'}}>
                 <a href={`mailto:lesommier.theo@gmail.com`} className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-yellow-300 hover:from-yellow-300 hover:to-primary text-secondary font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105 cursor-pointer">
-                  <FaEnvelope />
+                  <FaEnvelope className="group-hover:rotate-12 transition duration-300" />
                   Me Contacter
                 </a>
                 <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 cursor-pointer">
-                  <FaLinkedin />
+                  <FaLinkedin className="group-hover:rotate-12 transition duration-300" />
                   LinkedIn
                 </a>
               </div>

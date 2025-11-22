@@ -28,10 +28,38 @@ html {
   }
 }
 
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(251, 212, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(251, 212, 0, 0.6);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hover-bounce:hover {
   animation: bounceHover 0.6s ease-in-out;
 }
 
 .hover-pulse-glow:hover {
   animation: pulseGlow 0.6s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.6s ease-out forwards;
 }
