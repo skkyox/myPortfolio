@@ -76,7 +76,7 @@ export default function Portfolio() {
       {/* --- HERO SECTION --- */}
       <header className="bg-white shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-          <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
+          <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
           <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">{profile.name}</h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8">{profile.title}</p>
           
@@ -91,7 +91,7 @@ export default function Portfolio() {
           </p>
 
           <div className="flex gap-4">
-            <a href={`mailto:${profile.email}`} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+            <a href={`mailto:${profile.email}`} className="bg-primary hover:opacity-90 text-secondary px-6 py-3 rounded-lg font-medium transition">
               Me Contacter
             </a>
             <button className="border border-gray-300 hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium transition">
@@ -126,7 +126,7 @@ export default function Portfolio() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                   <div>
                     <h4 className="text-xl font-bold text-gray-900">{exp.role}</h4>
-                    <span className="text-blue-600 font-medium">{exp.company}</span>
+                    <span className="text-primary font-medium">{exp.company}</span>
                   </div>
                   <span className="text-sm text-gray-400 bg-gray-100 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
                 </div>
@@ -151,10 +151,10 @@ export default function Portfolio() {
           {/* Formation */}
           <div>
             <h3 className="text-2xl font-bold mb-6 text-gray-900">Formation</h3>
-            <div className="space-y-6 border-l-2 border-blue-100 pl-6">
+            <div className="space-y-6 border-l-2 border-primary/30 pl-6">
               {education.map((edu, idx) => (
                 <div key={idx} className="relative">
-                  <div className="absolute -left-[31px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white"></div>
+                  <div className="absolute -left-[31px] top-1 w-4 h-4 bg-primary rounded-full border-4 border-white"></div>
                   <h4 className="font-bold text-gray-900">{edu.degree}</h4>
                   <p className="text-gray-600">{edu.school}</p>
                   <span className="text-sm text-gray-400">{edu.year}</span>
@@ -187,11 +187,11 @@ export default function Portfolio() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-secondary text-white py-12">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-bold mb-6">Prêt à lancer un projet ?</h2>
           <p className="text-gray-400 mb-8">Disponible en freelance ou CDI sur Lyon et ses environs.</p>
-          <a href={`mailto:${profile.email}`} className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition">
+          <a href={`mailto:${profile.email}`} className="inline-block bg-primary hover:opacity-90 text-secondary font-bold py-3 px-8 rounded-full transition">
             {profile.email}
           </a>
           <p className="mt-8 text-sm text-gray-600">© {new Date().getFullYear()} Théo Le Sommier. Tous droits réservés.</p>
