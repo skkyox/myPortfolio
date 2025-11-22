@@ -51,25 +51,25 @@ export default function Portfolio() {
       desc: "Création et intégration d'une boutique e-commerce PrestaShop complète pour Plot et Terrasse. Développement du catalogue produits, système de paiement sécurisé, gestion des stocks, et optimisation SEO. Design responsive et ergonomie centrée sur l'expérience client pour maximiser les conversions."
     },
     {
-      role: "Développeur Mobile",
+      role: "Développeur Mobile Senior",
       company: "SuperConnectr",
       period: "Sept. 2021 - Juin 2024",
       tech: "React Native, Expo, RNPaper, SendBird",
-      desc: "Création de nouvelles fonctionnalités, intégration de chat, suivi et maintenance de l'application."
+      desc: "Développement et optimisation d'une application mobile de mise en relation. Implémentation de nouvelles fonctionnalités critiques, intégration d'un système de messaging temps réel avec SendBird pour améliorer l'engagement utilisateur. Maintenance continue et optimisation des performances de l'application en production."
     },
     {
       role: "Développeur Fullstack Freelance",
       company: "Deweto Agency",
       period: "Fév. 2020 - Sept. 2021",
       tech: "WordPress, PrestaShop, Dev From Scratch",
-      desc: "Création de sites internet (e-commerce/vitrine), publications sponsorisées et suivi client."
+      desc: "Conception et déploiement de sites e-commerce et vitrines commerciales pour clients variés. Expertise PrestaShop avec configuration de catalogues produits, systèmes de paiement et optimisation de taux de conversion. Gestion client et support post-production garantissant la satisfaction et la performance des projets."
     },
     {
       role: "Développeur Web (Alternance)",
       company: "NoShow / Park4night / Izypay",
       period: "2018 - 2020",
       tech: "VueJS, Laravel, PHP, Jquery, Symfony",
-      desc: "Série d'alternances formatrices : développement d'interfaces, maquettage AdobeXD, intégration Stripe et maintenance."
+      desc: "Parcours d'alternances enrichissant chez trois startups innovantes. Développement d'interfaces utilisateur dynamiques avec VueJS, architecture backend robuste avec Laravel et Symfony. Intégration de paiements Stripe, design UI/UX avec Adobe XD, et contribution à des projets real-world à forte charge utilisateur."
     }
   ];
 
