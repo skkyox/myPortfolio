@@ -9,7 +9,10 @@ import {
   FaPhp, 
   FaSymfony, 
   FaVuejs, 
-  FaMobileAlt ,
+  FaMobileAlt,
+  FaGamepad,
+  FaChess,
+  FaFire
 
 } from 'react-icons/fa';
 import { SiExpo, SiLaravel, SiAdobe, SiMysql, SiNextdotjs } from 'react-icons/si';
@@ -188,19 +191,47 @@ export default function Portfolio() {
           {/* Intérêts & Langues */}
           <div>
             <h3 className="text-2xl font-bold mb-6 text-white">Intérêts & Langues</h3>
-            <div className="bg-gray-700 p-6 rounded-xl">
-              <div className="mb-6">
-                <h4 className="font-bold text-white mb-2">Langues</h4>
-                <p className="text-gray-300">Français (Natif) • Anglais • Espagnol</p>
-              </div>
-              <div>
-                <h4 className="font-bold text-white mb-2">Loisirs</h4>
-                <div className="flex flex-wrap gap-3">
-                  {["Handball", "E-sport", "Échecs"].map((hobby, i) => (
-                    <span key={i} className="bg-gray-600 px-4 py-2 rounded-lg shadow-sm text-sm font-medium text-gray-100">
-                      {hobby}
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-xl border border-gray-600">
+                <h4 className="font-bold text-white mb-3">Langues</h4>
+                <div className="flex flex-wrap gap-2">
+                  {["Français (Natif)", "Anglais", "Espagnol"].map((lang, i) => (
+                    <span key={i} className="bg-gray-800 hover:bg-primary hover:text-secondary px-4 py-2 rounded-lg text-sm font-medium text-gray-200 transition duration-300 border border-gray-600 hover:border-primary">
+                      {lang}
                     </span>
                   ))}
+                </div>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-4 text-lg">Loisirs & Passions</h4>
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="bg-gradient-to-r from-orange-600/20 to-red-600/20 border border-orange-500/50 rounded-lg p-4 hover:border-orange-500 hover:shadow-lg hover:shadow-orange-500/20 transition duration-300 cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <FaFire className="text-2xl text-orange-500" />
+                      <div>
+                        <p className="font-bold text-white">Handball</p>
+                        <p className="text-sm text-gray-400">Sport collectif & passion compétitive</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/50 rounded-lg p-4 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 transition duration-300 cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <FaGamepad className="text-2xl text-purple-500" />
+                      <div>
+                        <p className="font-bold text-white">E-sport</p>
+                        <p className="text-sm text-gray-400">Compétition gaming & stratégie</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/50 rounded-lg p-4 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition duration-300 cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <FaChess className="text-2xl text-blue-500" />
+                      <div>
+                        <p className="font-bold text-white">Échecs</p>
+                        <p className="text-sm text-gray-400">Stratégie & réflexion analytique</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
