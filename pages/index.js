@@ -102,22 +102,22 @@ export default function Portfolio() {
             </div>
             <span className="text-lg font-black bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent group-hover:from-yellow-300 group-hover:to-primary transition duration-300">THÉO</span>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#skills" className="relative text-gray-300 font-medium group/link">
-              Stack
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+          <div className="hidden md:flex items-center gap-4 text-sm">
+            <a href="#skills" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
+              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Stack</span>
+              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
             </a>
-            <a href="#experience" className="relative text-gray-300 font-medium group/link">
-              Expérience
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            <a href="#experience" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
+              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Expérience</span>
+              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
             </a>
-            <a href="#education" className="relative text-gray-300 font-medium group/link">
-              Formation
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            <a href="#education" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
+              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Formation</span>
+              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
             </a>
-            <a href="#contact" className="relative text-gray-300 font-medium group/link">
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-yellow-300 group-hover/link:w-full transition-all duration-300"></span>
+            <a href="#contact" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
+              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Contact</span>
+              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
             </a>
           </div>
         </div>
