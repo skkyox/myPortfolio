@@ -15,7 +15,7 @@ import { SiExpo, SiLaravel, SiAdobe, SiMysql } from 'react-icons/si';
 
 export default function Portfolio() {
   
-  [cite_start]// Données extraites du CV [cite: 1, 2, 3, 4, 11, 12]
+  // Données extraites du CV
   const profile = {
     name: "Théo Le Sommier",
     title: "Développeur Web et Mobile",
@@ -34,7 +34,7 @@ export default function Portfolio() {
     { name: "Mobile (Expo)", icon: <SiExpo className="text-gray-800" /> },
   ];
 
-  [cite_start]// Expériences basées sur le CV [cite: 18, 20, 21, 22, 23]
+  // Expériences basées sur le CV
   const experiences = [
     {
       role: "Développeur Mobile",
@@ -59,7 +59,7 @@ export default function Portfolio() {
     }
   ];
 
-  [cite_start]// Formation [cite: 26, 27, 28]
+  // Formation
   const education = [
     { degree: "Mastère Expert en Stratégie Digitale", school: "Digital Campus, Lyon", year: "2018-2020" },
     { degree: "Bachelor Concepteur Réalisateur Web", school: "Sciences U, Lyon", year: "2017-2018" },
@@ -69,7 +69,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
       <Head>
-        <title>{profile.name} - {profile.title}</title>
+        <title>{`${profile.name} - ${profile.title}`}</title>
         <meta name="description" content={`Portfolio de ${profile.name}, ${profile.title} à Lyon.`} />
       </Head>
 
@@ -78,12 +78,12 @@ export default function Portfolio() {
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
           <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
           <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">{profile.name}</h1>
-          [cite_start]<p className="text-xl md:text-2xl text-gray-600 mb-8">{profile.title} [cite: 11]</p>
+          <p className="text-xl md:text-2xl text-gray-600 mb-8">{profile.title}</p>
           
           <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-8">
-            [cite_start]<span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location} [cite: 2]</span>
-            [cite_start]<span className="flex items-center gap-2"><FaEnvelope /> {profile.email} [cite: 4]</span>
-            [cite_start]<span className="flex items-center gap-2"><FaPhone /> {profile.phone} [cite: 3]</span>
+            <span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location}</span>
+            <span className="flex items-center gap-2"><FaEnvelope /> {profile.email}</span>
+            <span className="flex items-center gap-2"><FaPhone /> {profile.phone}</span>
           </div>
 
           <p className="text-lg text-gray-700 max-w-2xl leading-relaxed mb-8">
@@ -104,7 +104,7 @@ export default function Portfolio() {
       {/* --- SKILLS SECTION --- */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-5xl mx-auto px-6">
-          [cite_start]<h3 className="text-2xl font-bold mb-8 text-gray-900">Stack Technique [cite: 13]</h3>
+          <h3 className="text-2xl font-bold mb-8 text-gray-900">Stack Technique</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {skills.map((skill, idx) => (
               <div key={idx} className="flex flex-col items-center p-4 bg-gray-50 rounded-xl hover:shadow-md transition">
@@ -119,7 +119,7 @@ export default function Portfolio() {
       {/* --- EXPERIENCE SECTION --- */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6">
-          [cite_start]<h3 className="text-2xl font-bold mb-10 text-gray-900">Expériences Professionnelles [cite: 17]</h3>
+          <h3 className="text-2xl font-bold mb-10 text-gray-900">Expériences Professionnelles</h3>
           <div className="space-y-8">
             {experiences.map((exp, idx) => (
               <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300">
@@ -150,7 +150,7 @@ export default function Portfolio() {
           
           {/* Formation */}
           <div>
-            [cite_start]<h3 className="text-2xl font-bold mb-6 text-gray-900">Formation [cite: 25]</h3>
+            <h3 className="text-2xl font-bold mb-6 text-gray-900">Formation</h3>
             <div className="space-y-6 border-l-2 border-blue-100 pl-6">
               {education.map((edu, idx) => (
                 <div key={idx} className="relative">
@@ -165,18 +165,18 @@ export default function Portfolio() {
 
           {/* Intérêts & Langues */}
           <div>
-            [cite_start]<h3 className="text-2xl font-bold mb-6 text-gray-900">Intérêts & Langues [cite: 15, 31]</h3>
+            <h3 className="text-2xl font-bold mb-6 text-gray-900">Intérêts & Langues</h3>
             <div className="bg-gray-50 p-6 rounded-xl">
               <div className="mb-6">
                 <h4 className="font-bold text-gray-700 mb-2">Langues</h4>
-                [cite_start]<p className="text-gray-600">Français (Natif) • Anglais • Espagnol [cite: 16]</p>
+                <p className="text-gray-600">Français (Natif) • Anglais • Espagnol</p>
               </div>
               <div>
                 <h4 className="font-bold text-gray-700 mb-2">Loisirs</h4>
                 <div className="flex flex-wrap gap-3">
                   {["Handball", "E-sport", "Échecs"].map((hobby, i) => (
                     <span key={i} className="bg-white px-4 py-2 rounded-lg shadow-sm text-sm font-medium text-gray-600">
-                      [cite_start]{hobby} [cite: 30, 31, 32]
+                      {hobby}
                     </span>
                   ))}
                 </div>
