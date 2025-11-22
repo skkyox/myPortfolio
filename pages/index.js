@@ -37,6 +37,13 @@ export default function Portfolio() {
   // Expériences basées sur le CV
   const experiences = [
     {
+      role: "Créateur Freelance - Yoxu",
+      company: "Fondateur",
+      period: "Juin 2024 - Aujourd'hui",
+      tech: "React Native, Expo, Firebase, UI/UX Design",
+      desc: "Développement d'une application mobile innovante facilitant l'organisation de dîners privés entre hôtes. Responsable de l'architecture, du design UX/UX et de la gestion complète du projet de la conception à la mise en production."
+    },
+    {
       role: "Développeur Mobile",
       company: "SuperConnectr",
       period: "Sept. 2021 - Juin 2024",
