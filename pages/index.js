@@ -277,20 +277,38 @@ export default function Portfolio() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-gray-950 text-white py-12 border-t border-gray-700">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold mb-6">Prêt à lancer un projet ?</h2>
-          <p className="text-gray-400 mb-8">Disponible en freelance ou CDI sur Lyon et ses environs.</p>
-          <div className="flex justify-center gap-4 mb-8">
-            <a href={`mailto:${profile.email}`} className="inline-block bg-primary hover:opacity-90 text-secondary font-bold py-3 px-8 rounded-full transition">
+      <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 border-t border-primary/30">
+        <div className="max-w-5xl mx-auto px-6">
+          {/* Top Section */}
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent">
+              Prêt à lancer un projet ?
+            </h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Disponible en freelance ou CDI sur Lyon et ses environs. Parlons de vos idées et concrétisons votre vision ensemble.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
+            <a href={`mailto:${profile.email}`} className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-yellow-300 hover:from-yellow-300 hover:to-primary text-secondary font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105">
+              <FaEnvelope className="text-lg group-hover:rotate-12 transition duration-300" />
               {profile.email}
             </a>
-            <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition">
-              <FaLinkedin className="text-lg" />
+            <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105">
+              <FaLinkedin className="text-lg group-hover:rotate-12 transition duration-300" />
               LinkedIn
             </a>
           </div>
-          <p className="mt-8 text-sm text-gray-600">© {new Date().getFullYear()} Théo Le Sommier. Tous droits réservés.</p>
+
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent mb-8"></div>
+
+          {/* Bottom Section */}
+          <div className="text-center">
+            <p className="text-gray-400 mb-2">© {new Date().getFullYear()} Théo Le Sommier</p>
+            <p className="text-xs text-gray-500 tracking-widest">DÉVELOPPEUR WEB & MOBILE • LYON</p>
+          </div>
         </div>
       </footer>
     </div>
