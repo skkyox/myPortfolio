@@ -12,7 +12,10 @@ import {
   FaMobileAlt,
   FaGamepad,
   FaChess,
-  FaFire
+  FaFire,
+  FaFranceLand,
+  FaGlobe,
+  FaStar
 
 } from 'react-icons/fa';
 import { SiExpo, SiLaravel, SiAdobe, SiMysql, SiNextdotjs } from 'react-icons/si';
@@ -192,14 +195,36 @@ export default function Portfolio() {
           <div>
             <h3 className="text-2xl font-bold mb-6 text-white">Intérêts & Langues</h3>
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-xl border border-gray-600">
-                <h4 className="font-bold text-white mb-3">Langues</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["Français (Natif)", "Anglais", "Espagnol"].map((lang, i) => (
-                    <span key={i} className="bg-gray-800 hover:bg-primary hover:text-secondary px-4 py-2 rounded-lg text-sm font-medium text-gray-200 transition duration-300 border border-gray-600 hover:border-primary">
-                      {lang}
-                    </span>
-                  ))}
+              <div>
+                <h4 className="font-bold text-white mb-4 text-lg">Langues</h4>
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/50 rounded-lg p-4 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition duration-300 cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <div className="text-2xl text-blue-500">🇫🇷</div>
+                      <div>
+                        <p className="font-bold text-white">Français</p>
+                        <p className="text-sm text-gray-400">Natif • Maîtrise complète</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-r from-red-600/20 to-pink-600/20 border border-red-500/50 rounded-lg p-4 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transition duration-300 cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <div className="text-2xl">🇬🇧</div>
+                      <div>
+                        <p className="font-bold text-white">Anglais</p>
+                        <p className="text-sm text-gray-400">Courant • Communication professionnelle</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border border-yellow-500/50 rounded-lg p-4 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20 transition duration-300 cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <div className="text-2xl">🇪🇸</div>
+                      <div>
+                        <p className="font-bold text-white">Espagnol</p>
+                        <p className="text-sm text-gray-400">Intermédiaire • Conversationnel</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
