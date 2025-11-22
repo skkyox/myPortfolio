@@ -133,10 +133,10 @@ export default function Portfolio() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a href={`mailto:${profile.email}`} className="hover-bounce bg-primary hover:opacity-90 text-secondary px-6 py-3 rounded-lg font-medium transition">
+                <a href={`mailto:${profile.email}`} className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-yellow-300 hover:from-yellow-300 hover:to-primary text-secondary font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105">
                   Me Contacter
                 </a>
-                <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="hover-pulse-glow inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105">
                   <FaLinkedin />
                   LinkedIn
                 </a>
