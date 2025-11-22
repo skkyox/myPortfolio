@@ -132,7 +132,10 @@ export default function Portfolio() {
       {/* --- SKILLS SECTION --- */}
       <section className="py-16 bg-gray-800 border-t border-gray-700">
         <div className="max-w-5xl mx-auto px-6">
-          <h3 className="text-2xl font-bold mb-8 text-white">Stack Technique</h3>
+          <div className="mb-8">
+            <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Stack Technique</h3>
+            <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {skills.map((skill, idx) => (
               <div key={idx} className="flex flex-col items-center justify-center h-32 p-4 bg-gray-700 rounded-xl hover:shadow-md hover:bg-gray-600 transition">
@@ -147,7 +150,10 @@ export default function Portfolio() {
       {/* --- EXPERIENCE SECTION --- */}
       <section className="py-16 bg-gray-900">
         <div className="max-w-5xl mx-auto px-6">
-          <h3 className="text-2xl font-bold mb-10 text-white">Expériences Professionnelles</h3>
+          <div className="mb-10">
+            <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Expériences Professionnelles</h3>
+            <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
+          </div>
           <div className="space-y-8">
             {experiences.map((exp, idx) => (
               <div key={idx} className="bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl hover:border-primary transition duration-300">
@@ -178,7 +184,10 @@ export default function Portfolio() {
           
           {/* Formation */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-white">Formation</h3>
+            <div className="mb-6">
+              <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Formation</h3>
+              <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
+            </div>
             <div className="grid grid-cols-1 gap-3">
               {education.map((edu, idx) => {
                 const icons = ["🎓", "📚", "💡"];
@@ -205,7 +214,10 @@ export default function Portfolio() {
 
           {/* Intérêts & Langues */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-white">Intérêts & Langues</h3>
+            <div className="mb-6">
+              <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Intérêts & Langues</h3>
+              <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
+            </div>
             <div className="space-y-6">
               <div>
                 <h4 className="font-bold text-white mb-4 text-lg">Langues</h4>
