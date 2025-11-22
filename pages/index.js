@@ -179,15 +179,27 @@ export default function Portfolio() {
           {/* Formation */}
           <div>
             <h3 className="text-2xl font-bold mb-6 text-white">Formation</h3>
-            <div className="space-y-6 border-l-2 border-primary/30 pl-6">
-              {education.map((edu, idx) => (
-                <div key={idx} className="relative">
-                  <div className="absolute -left-[31px] top-1 w-4 h-4 bg-primary rounded-full border-4 border-gray-800"></div>
-                  <h4 className="font-bold text-white">{edu.degree}</h4>
-                  <p className="text-gray-400">{edu.school}</p>
-                  <span className="text-sm text-gray-500">{edu.year}</span>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 gap-3">
+              {education.map((edu, idx) => {
+                const icons = ["🎓", "📚", "💡"];
+                const colors = [
+                  "from-purple-600/20 to-pink-600/20 border-purple-500/50 hover:border-purple-500 hover:shadow-purple-500/20",
+                  "from-blue-600/20 to-cyan-600/20 border-blue-500/50 hover:border-blue-500 hover:shadow-blue-500/20",
+                  "from-green-600/20 to-emerald-600/20 border-green-500/50 hover:border-green-500 hover:shadow-green-500/20"
+                ];
+                return (
+                  <div key={idx} className={`bg-gradient-to-r ${colors[idx]} border rounded-lg p-4 hover:shadow-lg transition duration-300 cursor-pointer`}>
+                    <div className="flex items-start gap-3">
+                      <div className="text-2xl">{icons[idx]}</div>
+                      <div className="flex-1">
+                        <p className="font-bold text-white">{edu.degree}</p>
+                        <p className="text-sm text-gray-400">{edu.school}</p>
+                        <span className="text-xs text-primary font-semibold">{edu.year}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
