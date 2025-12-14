@@ -43,21 +43,27 @@ export default function Portfolio() {
   // Expériences basées sur le CV
   const experiences = [
     {
-      role: "Fondateur - Yoxu",
+      role: "Yoxu",
       company: "Projet Personnel",
       period: "Juin 2024 - Aujourd'hui",
       tech: "React Native, Expo, Firebase, UI/UX Design",
       desc: "Développement d'une plateforme mobile innovante pour l'organisation de dîners privés entre hôtes. Gestion complète du projet : conception UX/UI, architecture technique, développement backend et déploiement. Application facilitant la mise en relation et la logistique événementielle."
     },
     {
-      role: "Fondateur - BoostYourClass",
+      role: "BoostMyClass",
       company: "Projet Personnel",
       period: "2024 - Aujourd'hui",
       tech: "Next.js, OpenAI API, React, Tailwind CSS, Node.js",
-      desc: "Révolutionner l'éducation grâce à l'Intelligence Artificielle. BoostYourClass est une plateforme SaaS innovante qui permet aux enseignants de générer des cours complets, exercices personnalisés et évaluations en quelques clics. L'IA analyse le programme, s'adapte au niveau des élèves et produit du contenu pédagogique de haute qualité — libérant les professeurs pour ce qui compte vraiment : inspirer et accompagner leurs élèves."
+      desc: "Révolutionner l'éducation grâce à l'Intelligence Artificielle. BoostMyClass est une plateforme SaaS innovante qui permet aux enseignants de générer des cours complets, exercices personnalisés et évaluations en quelques clics. L'IA analyse le programme, s'adapte au niveau des élèves et produit du contenu pédagogique de haute qualité — libérant les professeurs pour ce qui compte vraiment : inspirer et accompagner leurs élèves.",
+      images: [
+        { src: "/boostyourclass-landing.png", label: "Landing Page" },
+        { src: "/boostyourclass-dashboard.png", label: "Dashboard" },
+        { src: "/boostyourclass-create.png", label: "Création de cours" }
+      ],
+      featured: true
     },
     {
-      role: "Développeur Mobile Senior",
+      role: "Développeur React Native",
       company: "SuperConnectr",
       period: "Sept. 2021 - Juin 2024",
       tech: "React Native, Expo, RNPaper, SendBird",
@@ -188,21 +194,47 @@ export default function Portfolio() {
           </div>
           <div className="space-y-8">
             {experiences.map((exp, idx) => (
-              <div key={idx} className="bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl hover:border-primary transition duration-300">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-white">{exp.role}</h4>
-                    <span className="text-primary font-medium">{exp.company}</span>
+              <div key={idx} className={`bg-gray-800 rounded-2xl shadow-lg border ${exp.featured ? 'border-primary/50 bg-gradient-to-br from-gray-800 via-gray-800 to-primary/10' : 'border-gray-700'} hover:shadow-xl hover:border-primary transition duration-300 overflow-hidden`}>
+                {exp.images && exp.images.length > 0 && (
+                  <div className="p-6 pb-0">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {exp.images.map((img, imgIdx) => (
+                        <div key={imgIdx} className="group relative overflow-hidden rounded-xl border border-gray-600 hover:border-primary transition-all duration-300">
+                          <div className="aspect-video overflow-hidden">
+                            <img 
+                              src={img.src} 
+                              alt={img.label} 
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            />
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/90 via-gray-900/60 to-transparent p-3">
+                            <span className="text-sm font-semibold text-white">{img.label}</span>
+                          </div>
+                          <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-all duration-300"></div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <span className="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
-                </div>
-                <p className="text-gray-300 mb-4">{exp.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.split(', ').map((t, i) => (
-                    <span key={i} className="text-xs font-semibold text-gray-200 bg-gray-700 px-2 py-1 rounded border border-gray-600">
-                      {t}
-                    </span>
-                  ))}
+                )}
+                <div className="p-8">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <h4 className={`text-xl font-bold ${exp.featured ? 'bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent' : 'text-white'}`}>{exp.role}</h4>
+                        {exp.featured && <span className="text-xs bg-gradient-to-r from-primary to-yellow-300 text-secondary font-bold px-2 py-1 rounded-full">Projet Phare</span>}
+                      </div>
+                      <span className="text-primary font-medium">{exp.company}</span>
+                    </div>
+                    <span className="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
+                  </div>
+                  <p className="text-gray-300 mb-4">{exp.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.split(', ').map((t, i) => (
+                      <span key={i} className={`text-xs font-semibold px-2 py-1 rounded border ${exp.featured ? 'text-primary bg-primary/10 border-primary/30' : 'text-gray-200 bg-gray-700 border-gray-600'}`}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
