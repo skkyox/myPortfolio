@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import { 
   FaGithub, 
   FaLinkedin, 
@@ -15,12 +16,14 @@ import {
   FaFire,
   FaFranceLand,
   FaGlobe,
-  FaStar
+  FaStar,
+  FaTimes
 
 } from 'react-icons/fa';
-import { SiExpo, SiLaravel, SiAdobe, SiMysql, SiNextdotjs } from 'react-icons/si';
+import { SiExpo, SiLaravel, SiMysql, SiNextdotjs } from 'react-icons/si';
 
 export default function Portfolio() {
+  const [selectedImage, setSelectedImage] = useState(null);
   
   // Données extraites du CV
   const profile = {
@@ -36,7 +39,6 @@ export default function Portfolio() {
     { name: "React & React Native", icon: <FaReact className="text-blue-400" /> },
     { name: "VueJs & NuxtJS", icon: <FaVuejs className="text-green-500" /> },
     { name: "Next.js", icon: <SiNextdotjs className="text-white-500" /> },
-    { name: "Design (Adobe XD)", icon: <SiAdobe className="text-pink-600" /> },
     { name: "Mobile (Expo)", icon: <SiExpo className="text-gray-800" /> },
   ];
 
@@ -203,7 +205,11 @@ export default function Portfolio() {
                   <div className="p-6 pb-0">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {exp.images.map((img, imgIdx) => (
-                        <div key={imgIdx} className="group relative overflow-hidden rounded-xl border border-gray-600 hover:border-primary transition-all duration-300">
+                        <div 
+                          key={imgIdx} 
+                          className="group relative overflow-hidden rounded-xl border border-gray-600 hover:border-primary transition-all duration-300 cursor-pointer"
+                          onClick={() => setSelectedImage(img)}
+                        >
                           <div className="aspect-video overflow-hidden">
                             <img 
                               src={img.src} 
@@ -388,6 +394,34 @@ export default function Portfolio() {
           </div>
         </div>
       </footer>
+
+      {/* --- IMAGE MODAL --- */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white hover:text-primary transition-colors duration-300 z-10"
+            onClick={() => setSelectedImage(null)}
+          >
+            <FaTimes className="text-3xl" />
+          </button>
+          <div 
+            className="relative max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={selectedImage.src} 
+              alt={selectedImage.label} 
+              className="w-full h-full object-contain"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent p-6">
+              <span className="text-xl font-bold text-white">{selectedImage.label}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
