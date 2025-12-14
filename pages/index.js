@@ -398,7 +398,7 @@ export default function Portfolio() {
       {/* --- IMAGE MODAL --- */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 overflow-auto"
           onClick={() => setSelectedImage(null)}
         >
           <button 
@@ -408,16 +408,16 @@ export default function Portfolio() {
             <FaTimes className="text-3xl" />
           </button>
           <div 
-            className="relative max-w-5xl w-full max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl"
+            className="relative flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img 
               src={selectedImage.src} 
               alt={selectedImage.label} 
-              className="w-full h-full object-contain"
+              className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent p-6">
-              <span className="text-xl font-bold text-white">{selectedImage.label}</span>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-gray-900/80 px-4 py-2 rounded-full">
+              <span className="text-sm font-semibold text-white">{selectedImage.label}</span>
             </div>
           </div>
         </div>
