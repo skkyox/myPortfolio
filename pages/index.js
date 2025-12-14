@@ -43,11 +43,16 @@ export default function Portfolio() {
   // Expériences basées sur le CV
   const experiences = [
     {
-      role: "Yoxu",
+      role: "Hosteat",
       company: "Projet Personnel",
       period: "Juin 2024 - Aujourd'hui",
       tech: "React Native, Expo, Firebase, UI/UX Design",
-      desc: "Développement d'une plateforme mobile innovante pour l'organisation de dîners privés entre hôtes. Gestion complète du projet : conception UX/UI, architecture technique, développement backend et déploiement. Application facilitant la mise en relation et la logistique événementielle."
+      desc: "Développement d'une plateforme mobile innovante pour l'organisation de dîners privés entre hôtes. Gestion complète du projet : conception UX/UI, architecture technique, développement backend et déploiement. Application facilitant la mise en relation et la logistique événementielle.",
+      images: [
+        { src: "/hosteat-landing.png", label: "Accueil" },
+        { src: "/hosteat-explore.png", label: "Explorer" },
+        { src: "/hosteat-create.png", label: "Créer un repas" }
+      ]
     },
     {
       role: "BoostMyClass",
@@ -60,7 +65,6 @@ export default function Portfolio() {
         { src: "/boostyourclass-dashboard.png", label: "Dashboard" },
         { src: "/boostyourclass-create.png", label: "Création de cours" }
       ],
-      featured: true
     },
     {
       role: "Développeur React Native",
@@ -194,7 +198,7 @@ export default function Portfolio() {
           </div>
           <div className="space-y-8">
             {experiences.map((exp, idx) => (
-              <div key={idx} className={`bg-gray-800 rounded-2xl shadow-lg border ${exp.featured ? 'border-primary/50 bg-gradient-to-br from-gray-800 via-gray-800 to-primary/10' : 'border-gray-700'} hover:shadow-xl hover:border-primary transition duration-300 overflow-hidden`}>
+              <div key={idx} className="bg-gray-800 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl hover:border-primary transition duration-300 overflow-hidden">
                 {exp.images && exp.images.length > 0 && (
                   <div className="p-6 pb-0">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -219,10 +223,7 @@ export default function Portfolio() {
                 <div className="p-8">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                     <div>
-                      <div className="flex items-center gap-3">
-                        <h4 className={`text-xl font-bold ${exp.featured ? 'bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent' : 'text-white'}`}>{exp.role}</h4>
-                        {exp.featured && <span className="text-xs bg-gradient-to-r from-primary to-yellow-300 text-secondary font-bold px-2 py-1 rounded-full">Projet Phare</span>}
-                      </div>
+                      <h4 className="text-xl font-bold text-white">{exp.role}</h4>
                       <span className="text-primary font-medium">{exp.company}</span>
                     </div>
                     <span className="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
@@ -230,7 +231,7 @@ export default function Portfolio() {
                   <p className="text-gray-300 mb-4">{exp.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {exp.tech.split(', ').map((t, i) => (
-                      <span key={i} className={`text-xs font-semibold px-2 py-1 rounded border ${exp.featured ? 'text-primary bg-primary/10 border-primary/30' : 'text-gray-200 bg-gray-700 border-gray-600'}`}>
+                      <span key={i} className="text-xs font-semibold px-2 py-1 rounded border text-gray-200 bg-gray-700 border-gray-600">
                         {t}
                       </span>
                     ))}
