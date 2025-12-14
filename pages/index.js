@@ -50,11 +50,11 @@ export default function Portfolio() {
       desc: "Développement d'une plateforme mobile innovante pour l'organisation de dîners privés entre hôtes. Gestion complète du projet : conception UX/UI, architecture technique, développement backend et déploiement. Application facilitant la mise en relation et la logistique événementielle."
     },
     {
-      role: "Développeur Freelance - Plot et Terrasse",
-      company: "Freelance",
-      period: "2024",
-      tech: "PrestaShop, PHP, MySQL, Customization",
-      desc: "Création et intégration d'une boutique e-commerce PrestaShop complète pour Plot et Terrasse. Développement du catalogue produits, système de paiement sécurisé, gestion des stocks, et optimisation SEO. Design responsive et ergonomie centrée sur l'expérience client pour maximiser les conversions."
+      role: "Fondateur - BoostYourClass",
+      company: "Projet Personnel",
+      period: "2024 - Aujourd'hui",
+      tech: "Next.js, OpenAI API, React, Tailwind CSS, Node.js",
+      desc: "Révolutionner l'éducation grâce à l'Intelligence Artificielle. BoostYourClass est une plateforme SaaS innovante qui permet aux enseignants de générer des cours complets, exercices personnalisés et évaluations en quelques clics. L'IA analyse le programme, s'adapte au niveau des élèves et produit du contenu pédagogique de haute qualité — libérant les professeurs pour ce qui compte vraiment : inspirer et accompagner leurs élèves."
     },
     {
       role: "Développeur Mobile Senior",
