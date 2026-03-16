@@ -1,318 +1,432 @@
 import Head from 'next/head';
-import { 
-  FaGithub, 
-  FaLinkedin, 
-  FaEnvelope, 
-  FaPhone, 
-  FaMapMarkerAlt, 
-  FaReact, 
-  FaPhp, 
-  FaSymfony, 
-  FaVuejs, 
-  FaMobileAlt,
+import { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  FaLinkedin,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaReact,
+  FaVuejs,
   FaGamepad,
   FaChess,
   FaFire,
-  FaFranceLand,
-  FaGlobe,
-  FaStar
-
+  FaArrowRight,
+  FaBars,
+  FaTimes,
 } from 'react-icons/fa';
-import { SiExpo, SiLaravel, SiAdobe, SiMysql, SiNextdotjs } from 'react-icons/si';
+import { SiExpo, SiAdobe, SiNextdotjs } from 'react-icons/si';
+
+// ─── Scroll reveal hook ───
+function useReveal() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const el = ref.current;
+    if (el) {
+      const reveals = el.querySelectorAll('.reveal');
+      reveals.forEach((r) => observer.observe(r));
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
+// ─── Active section hook ───
+function useActiveSection(sectionIds) {
+  const [active, setActive] = useState('');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [sectionIds]);
+
+  return active;
+}
 
 export default function Portfolio() {
-  
-  // Données extraites du CV
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const containerRef = useReveal();
+  const sectionIds = ['hero', 'skills', 'experience', 'education', 'contact'];
+  const activeSection = useActiveSection(sectionIds);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   const profile = {
     name: "Théo Le Sommier",
-    title: "Développeur Web et Mobile",
+    title: "Développeur Web & Mobile",
     location: "Lyon, 69007",
     phone: "07-86-45-16-43",
-    email: "lesommier.theo@gmail.com",
+    email: "theo@deweto-agency.com",
     bio: "Développeur de 27 ans expert dans l'écosystème JavaScript. Fort de 6 ans d'expérience, je conçois des applications mobiles et web ultra-performantes grâce à React Native et Next.js. Passionné par l'innovation, j'intègre désormais l'Intelligence Artificielle au cœur de mes projets pour repousser les limites de l'expérience utilisateur.",
+    linkedin: "https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/",
   };
 
   const skills = [
-    { name: "React & React Native", icon: <FaReact className="text-blue-400" /> },
-    { name: "VueJs & NuxtJS", icon: <FaVuejs className="text-green-500" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-white-500" /> },
-    { name: "Design (Adobe XD)", icon: <SiAdobe className="text-pink-600" /> },
-    { name: "Mobile (Expo)", icon: <SiExpo className="text-gray-800" /> },
+    { name: "React & React Native", icon: <FaReact />, color: "#61dafb" },
+    { name: "VueJS & NuxtJS", icon: <FaVuejs />, color: "#42b883" },
+    { name: "Next.js", icon: <SiNextdotjs />, color: "#ffffff" },
+    { name: "Design (Adobe XD)", icon: <SiAdobe />, color: "#ff61f6" },
+    { name: "Mobile (Expo)", icon: <SiExpo />, color: "#f0f0f0" },
   ];
 
-  // Expériences basées sur le CV
   const experiences = [
     {
-      role: "Fondateur - Yoxu",
-      company: "Projet Personnel",
-      period: "Juin 2024 - Aujourd'hui",
-      tech: "React Native, Expo, Firebase, UI/UX Design",
-      desc: "Développement d'une plateforme mobile innovante pour l'organisation de dîners privés entre hôtes. Gestion complète du projet : conception UX/UI, architecture technique, développement backend et déploiement. Application facilitant la mise en relation et la logistique événementielle."
-    },
-    {
-      role: "Développeur Freelance - Plot et Terrasse",
-      company: "Freelance",
-      period: "2024",
-      tech: "PrestaShop, PHP, MySQL, Customization",
-      desc: "Création et intégration d'une boutique e-commerce PrestaShop complète pour Plot et Terrasse. Développement du catalogue produits, système de paiement sécurisé, gestion des stocks, et optimisation SEO. Design responsive et ergonomie centrée sur l'expérience client pour maximiser les conversions."
+      role: "Développeur Freelance",
+      company: "DEWETO Agency",
+      period: "Juin 2024 — Aujourd'hui",
+      tech: ["Hydrogen", "Shopify", "Next.js", "React Native", "SaaS"],
+      desc: "Activité freelance variée : création de deux sites e-commerce avec Hydrogen et Shopify, développement de plusieurs sites vitrines, et conception de SaaS dans le cadre de projets personnels.",
     },
     {
       role: "Développeur Mobile Senior",
       company: "SuperConnectr",
-      period: "Sept. 2021 - Juin 2024",
-      tech: "React Native, Expo, RNPaper, SendBird",
-      desc: "Développement et optimisation d'une application mobile de mise en relation. Implémentation de nouvelles fonctionnalités critiques, intégration d'un système de messaging temps réel avec SendBird pour améliorer l'engagement utilisateur. Maintenance continue et optimisation des performances de l'application en production."
+      period: "Sept. 2021 — Juin 2024",
+      tech: ["React Native", "Expo", "RNPaper", "SendBird"],
+      desc: "Développement et optimisation d'une application mobile de mise en relation. Implémentation de fonctionnalités critiques et intégration d'un système de messaging temps réel avec SendBird.",
     },
     {
       role: "Développeur Fullstack Freelance",
       company: "Deweto Agency",
-      period: "Fév. 2020 - Sept. 2021",
-      tech: "WordPress, PrestaShop, Dev From Scratch",
-      desc: "Conception et déploiement de sites e-commerce et vitrines commerciales pour clients variés. Expertise PrestaShop avec configuration de catalogues produits, systèmes de paiement et optimisation de taux de conversion. Gestion client et support post-production garantissant la satisfaction et la performance des projets."
+      period: "Fév. 2020 — Sept. 2021",
+      tech: ["WordPress", "PrestaShop", "Dev From Scratch"],
+      desc: "Conception et déploiement de sites e-commerce et vitrines commerciales. Configuration de catalogues produits, systèmes de paiement et optimisation de taux de conversion.",
     },
     {
       role: "Développeur Web (Alternance)",
       company: "NoShow / Park4night / Izypay",
-      period: "2018 - 2020",
-      tech: "VueJS, Laravel, PHP, Jquery, Symfony",
-      desc: "Parcours d'alternances enrichissant chez trois startups innovantes. Développement d'interfaces utilisateur dynamiques avec VueJS, architecture backend robuste avec Laravel et Symfony. Intégration de paiements Stripe, design UI/UX avec Adobe XD, et contribution à des projets real-world à forte charge utilisateur."
-    }
+      period: "2018 — 2020",
+      tech: ["VueJS", "Laravel", "PHP", "jQuery", "Symfony"],
+      desc: "Parcours d'alternances enrichissant chez trois startups innovantes. Développement d'interfaces utilisateur dynamiques avec VueJS, architecture backend robuste avec Laravel et Symfony.",
+    },
   ];
 
-  // Formation
   const education = [
-    { degree: "Mastère Expert en Stratégie Digitale", school: "Digital Campus, Lyon", year: "2018-2020" },
-    { degree: "Bachelor Concepteur Réalisateur Web", school: "Sciences U, Lyon", year: "2017-2018" },
-    { degree: "BTS Système Numérique", school: "Lycée Saint Michel, Annecy", year: "2017" },
+    { degree: "Mastère Expert en Stratégie Digitale", school: "Digital Campus, Lyon", year: "2018—2020", color: "#a855f7" },
+    { degree: "Bachelor Concepteur Réalisateur Web", school: "Sciences U, Lyon", year: "2017—2018", color: "#3b82f6" },
+    { degree: "BTS Système Numérique", school: "Lycée Saint Michel, Annecy", year: "2017", color: "#22c55e" },
+  ];
+
+  const languages = [
+    { name: "Français", level: "Natif", flag: "🇫🇷" },
+    { name: "Anglais", level: "Courant", flag: "🇬🇧" },
+    { name: "Espagnol", level: "Intermédiaire", flag: "🇪🇸" },
+  ];
+
+  const hobbies = [
+    { name: "Handball", desc: "Sport collectif & passion compétitive", icon: <FaFire />, color: "#f97316" },
+    { name: "E-sport", desc: "Compétition gaming & stratégie", icon: <FaGamepad />, color: "#a855f7" },
+    { name: "Échecs", desc: "Stratégie & réflexion analytique", icon: <FaChess />, color: "#3b82f6" },
+  ];
+
+  const navLinks = [
+    { id: "skills", label: "Stack" },
+    { id: "experience", label: "Expérience" },
+    { id: "education", label: "Formation" },
+    { id: "realisations", label: "Réalisations", href: "/realisations" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white font-sans">
+    <div ref={containerRef} className="grain">
       <Head>
-        <title>{`${profile.name} - ${profile.title}`}</title>
-        <meta name="description" content={`Portfolio de ${profile.name}, ${profile.title} à Lyon.`} />
+        <title>{`${profile.name} — ${profile.title}`}</title>
+        <meta name="description" content={`Portfolio de ${profile.name}, ${profile.title} basé à Lyon.`} />
       </Head>
 
-      {/* --- NAVIGATION BAR --- */}
-      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-primary/20 sticky top-0 z-50 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="relative overflow-hidden rounded-lg">
-              <img src="/logo.png" alt="Logo Théo" className="w-12 h-12 rounded-lg shadow-lg group-hover:scale-110 transition duration-300" />
-            </div>
-            <span className="text-lg font-black bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent group-hover:from-yellow-300 group-hover:to-primary transition duration-300">THÉO</span>
+      {/* ═══ NAVIGATION ═══ */}
+      <nav className={`nav-glass fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'shadow-lg shadow-black/20' : ''}`}>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#hero" className="flex items-center gap-3 group">
+            <img src="/logo.png" alt="Logo" className="w-10 h-10 rounded-lg transition-transform duration-300 group-hover:scale-110" />
+            <span className="font-display font-bold text-sm tracking-widest text-primary hidden sm:block">THÉO</span>
+          </a>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href || `#${link.id}`}
+                className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
-          <div className="hidden md:flex items-center gap-4 text-sm">
-            <a href="#skills" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
-              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Stack</span>
-              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-            <a href="#experience" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
-              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Expérience</span>
-              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-            <a href="#education" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
-              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Formation</span>
-              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-            <a href="#contact" className="relative px-4 py-2 rounded-lg bg-gray-800/0 hover:bg-gray-800/60 text-gray-300 font-bold group/link transition-all duration-300 group-hover/link:bg-gradient-to-r group-hover/link:from-primary/20 group-hover/link:to-yellow-300/20">
-              <span className="bg-gradient-to-r from-gray-300 to-gray-300 group-hover/link:from-primary group-hover/link:to-yellow-300 bg-clip-text text-transparent transition-all duration-300">Contact</span>
-              <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary to-yellow-300 scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </a>
-          </div>
+
+          {/* Mobile burger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-xl text-zinc-400 hover:text-primary transition-colors"
+            aria-label="Menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
-      <header className="bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg">
-        <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="flex-shrink-0 relative">
-              <div className="absolute -inset-1 bg-gradient-to-br from-primary via-yellow-300 to-primary rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-              <img src="/profile.jpg" alt={profile.name} className="relative w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover shadow-lg border-4 border-primary" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
-              <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4">{profile.name}</h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-8">{profile.title}</p>
-              
-              <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-8">
-                <span className="flex items-center gap-2"><FaMapMarkerAlt /> {profile.location}</span>
-                <span className="flex items-center gap-2"><FaEnvelope /> {profile.email}</span>
-                <span className="flex items-center gap-2"><FaPhone /> {profile.phone}</span>
+      {/* Mobile fullscreen menu */}
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+        <button onClick={closeMenu} className="absolute top-6 right-6 text-2xl text-zinc-400 hover:text-primary">
+          <FaTimes />
+        </button>
+        {navLinks.map((link) => (
+          <a key={link.id} href={link.href || `#${link.id}`} onClick={closeMenu}>
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      {/* ═══ HERO ═══ */}
+      <section id="hero" className="mesh-gradient min-h-screen flex items-center relative pt-20">
+        <div className="blob blob-1"></div>
+        <div className="blob blob-2"></div>
+        <div className="blob blob-3"></div>
+
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-0 w-full">
+          <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16 items-center">
+            {/* Left content */}
+            <div className="order-2 md:order-1">
+              <div className="reveal">
+                <p className="hero-subtitle text-primary text-xs mb-6 tracking-[0.2em]">Portfolio 2024</p>
               </div>
 
-              <p className="text-lg text-gray-300 max-w-2xl leading-relaxed mb-8">
+              <h1 className="reveal reveal-delay-1 hero-title text-5xl sm:text-6xl lg:text-7xl text-white mb-6">
+                {profile.name.split(' ').map((word, i) => (
+                  <span key={i} className="block">
+                    {i === 0 ? word : <span className="text-primary">{word}</span>}
+                    {i === 0 ? ' ' : ''}
+                  </span>
+                ))}
+              </h1>
+
+              <p className="reveal reveal-delay-2 hero-subtitle text-zinc-500 text-xs mb-8">
+                {profile.title}
+              </p>
+
+              <p className="reveal reveal-delay-3 text-zinc-400 text-base leading-relaxed max-w-lg mb-10">
                 {profile.bio}
               </p>
 
-              <div className="flex flex-wrap gap-4">
-                <a href={`mailto:lesommier.theo@gmail.com`} className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-yellow-300 hover:from-yellow-300 hover:to-primary text-secondary font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105 cursor-pointer">
+              {/* Stats row */}
+              <div className="reveal reveal-delay-3 flex gap-10 mb-10">
+                <div>
+                  <div className="stat-number">6+</div>
+                  <div className="stat-label">Ans d'XP</div>
+                </div>
+                <div>
+                  <div className="stat-number">20+</div>
+                  <div className="stat-label">Projets</div>
+                </div>
+                <div>
+                  <div className="stat-number">3</div>
+                  <div className="stat-label">Startups</div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="reveal reveal-delay-4 flex flex-wrap gap-4">
+                <a href={`mailto:${profile.email}`} className="btn-primary">
                   <FaEnvelope />
-                  Me Contacter
+                  <span>Me Contacter</span>
                 </a>
-                <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 cursor-pointer">
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline">
                   <FaLinkedin />
-                  LinkedIn
+                  <span>LinkedIn</span>
                 </a>
+              </div>
+
+              {/* Contact info */}
+              <div className="reveal reveal-delay-5 flex flex-wrap gap-6 mt-10 text-xs text-zinc-500">
+                <span className="flex items-center gap-2"><FaMapMarkerAlt className="text-primary/50" /> {profile.location}</span>
+                <span className="flex items-center gap-2"><FaEnvelope className="text-primary/50" /> {profile.email}</span>
+                <span className="flex items-center gap-2"><FaPhone className="text-primary/50" /> {profile.phone}</span>
+              </div>
+            </div>
+
+            {/* Right - Profile photo */}
+            <div className="order-1 md:order-2 flex justify-center reveal">
+              <div className="profile-ring">
+                <img
+                  src="/profile.jpg"
+                  alt={profile.name}
+                  className="relative z-10 w-48 h-48 md:w-64 md:h-64 rounded-full object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
-      </header>
 
-      {/* --- SKILLS SECTION --- */}
-      <section id="skills" className="py-16 bg-gray-800 border-t border-gray-700">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="mb-8">
-            <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Stack Technique</h3>
-            <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-600 text-xs">
+          <span className="font-display tracking-widest uppercase text-[10px]">Scroll</span>
+          <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent animate-pulse-slow"></div>
+        </div>
+      </section>
+
+      {/* ═══ SKILLS ═══ */}
+      <section id="skills" className="py-24 md:py-32 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="reveal mb-16">
+            <div className="section-heading">
+              <span className="heading-accent">01</span>
+              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Compétences</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Stack Technique</h2>
+            </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {skills.map((skill, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center h-32 p-4 bg-gray-700 rounded-xl hover:shadow-md hover:bg-gray-600 transition">
-                <div className="text-4xl mb-3">{skill.icon}</div>
-                <span className="font-medium text-sm text-center text-gray-200 line-clamp-2">{skill.name}</span>
+              <div key={idx} className={`reveal reveal-delay-${idx + 1} skill-card`}>
+                <div className="skill-icon" style={{ color: skill.color }}>
+                  {skill.icon}
+                </div>
+                <span className="font-display font-semibold text-sm text-zinc-300">{skill.name}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- EXPERIENCE SECTION --- */}
-      <section id="experience" className="py-16 bg-gray-900">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="mb-10">
-            <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Expériences Professionnelles</h3>
-            <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
+      {/* ═══ EXPERIENCE ═══ */}
+      <section id="experience" className="py-24 md:py-32 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="reveal mb-16">
+            <div className="section-heading">
+              <span className="heading-accent">02</span>
+              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Parcours</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Expérience</h2>
+            </div>
           </div>
-          <div className="space-y-8">
+
+          <div className="timeline">
             {experiences.map((exp, idx) => (
-              <div key={idx} className="bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700 hover:shadow-xl hover:border-primary transition duration-300">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-white">{exp.role}</h4>
-                    <span className="text-primary font-medium">{exp.company}</span>
+              <div key={idx} className={`reveal reveal-delay-${Math.min(idx + 1, 3)} timeline-item`}>
+                <div className="timeline-dot"></div>
+                <div className="timeline-card">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="font-display font-bold text-lg text-white">{exp.role}</h3>
+                      <span className="text-primary text-sm font-semibold">{exp.company}</span>
+                    </div>
+                    <span className="text-xs text-zinc-500 font-display font-semibold tracking-wider shrink-0">{exp.period}</span>
                   </div>
-                  <span className="text-sm text-gray-400 bg-gray-700 px-3 py-1 rounded-full mt-2 md:mt-0">{exp.period}</span>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4">{exp.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.map((t, i) => (
+                      <span key={i} className="tech-tag">{t}</span>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-gray-300 mb-4">{exp.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.split(', ').map((t, i) => (
-                    <span key={i} className="text-xs font-semibold text-gray-200 bg-gray-700 px-2 py-1 rounded border border-gray-600">
-                      {t}
-                    </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ EDUCATION & INTERESTS ═══ */}
+      <section id="education" className="py-24 md:py-32 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16">
+            {/* Formation */}
+            <div>
+              <div className="reveal mb-10">
+                <div className="section-heading">
+                  <span className="heading-accent">03</span>
+                  <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Études</p>
+                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Formation</h2>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {education.map((edu, idx) => (
+                  <div
+                    key={idx}
+                    className={`reveal reveal-delay-${idx + 1} edu-card`}
+                    style={{ '--accent-color': edu.color }}
+                  >
+                    <h4 className="font-display font-bold text-white text-sm mb-1">{edu.degree}</h4>
+                    <p className="text-zinc-500 text-xs mb-1">{edu.school}</p>
+                    <span className="text-xs font-semibold" style={{ color: edu.color }}>{edu.year}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Intérêts & Langues */}
+            <div>
+              <div className="reveal mb-10">
+                <div className="section-heading">
+                  <span className="heading-accent">&</span>
+                  <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Personnel</p>
+                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Langues & Intérêts</h2>
+                </div>
+              </div>
+
+              {/* Languages */}
+              <div className="mb-8">
+                <h4 className="reveal font-display font-semibold text-xs tracking-[0.15em] uppercase text-zinc-500 mb-4">Langues</h4>
+                <div className="flex flex-wrap gap-3">
+                  {languages.map((lang, idx) => (
+                    <div key={idx} className={`reveal reveal-delay-${idx + 1} glass rounded-full px-5 py-2.5 flex items-center gap-2.5 hover:border-primary/20 transition-all duration-300`}>
+                      <span className="text-lg">{lang.flag}</span>
+                      <div>
+                        <span className="font-display font-semibold text-sm text-white">{lang.name}</span>
+                        <span className="text-zinc-500 text-xs ml-2">{lang.level}</span>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* --- EDUCATION & INTERESTS --- */}
-      <section id="education" className="py-16 bg-gray-800">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-          
-          {/* Formation */}
-          <div>
-            <div className="mb-6">
-              <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Formation</h3>
-              <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
-            </div>
-            <div className="grid grid-cols-1 gap-3">
-              {education.map((edu, idx) => {
-                const icons = ["🎓", "📚", "💡"];
-                const colors = [
-                  "from-purple-600/20 to-pink-600/20 border-purple-500/50 hover:border-purple-500 hover:shadow-purple-500/20",
-                  "from-blue-600/20 to-cyan-600/20 border-blue-500/50 hover:border-blue-500 hover:shadow-blue-500/20",
-                  "from-green-600/20 to-emerald-600/20 border-green-500/50 hover:border-green-500 hover:shadow-green-500/20"
-                ];
-                return (
-                  <div key={idx} className={`bg-gradient-to-r ${colors[idx]} border rounded-lg p-4 hover:shadow-lg transition duration-300 cursor-pointer`}>
-                    <div className="flex items-start gap-3">
-                      <div className="text-2xl">{icons[idx]}</div>
-                      <div className="flex-1">
-                        <p className="font-bold text-white">{edu.degree}</p>
-                        <p className="text-sm text-gray-400">{edu.school}</p>
-                        <span className="text-xs text-primary font-semibold">{edu.year}</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Intérêts & Langues */}
-          <div>
-            <div className="mb-6">
-              <h3 className="text-4xl font-black bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent inline-block mb-3">Intérêts & Langues</h3>
-              <div className="h-1 w-32 bg-gradient-to-r from-primary to-yellow-300 rounded-full"></div>
-            </div>
-            <div className="space-y-6">
+              {/* Hobbies */}
               <div>
-                <h4 className="font-bold text-white mb-4 text-lg">Langues</h4>
-                <div className="grid grid-cols-1 gap-3">
-                  <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/50 rounded-lg p-4 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition duration-300 cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <div className="text-2xl text-blue-500">🇫🇷</div>
+                <h4 className="reveal font-display font-semibold text-xs tracking-[0.15em] uppercase text-zinc-500 mb-4">Passions</h4>
+                <div className="space-y-3">
+                  {hobbies.map((hobby, idx) => (
+                    <div key={idx} className={`reveal reveal-delay-${idx + 1} interest-pill`}>
+                      <span className="text-lg" style={{ color: hobby.color }}>{hobby.icon}</span>
                       <div>
-                        <p className="font-bold text-white">Français</p>
-                        <p className="text-sm text-gray-400">Natif • Maîtrise complète</p>
+                        <p className="font-display font-semibold text-sm text-white">{hobby.name}</p>
+                        <p className="text-xs text-zinc-500">{hobby.desc}</p>
                       </div>
                     </div>
-                  </div>
-                  <div className="bg-gradient-to-r from-red-600/20 to-pink-600/20 border border-red-500/50 rounded-lg p-4 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transition duration-300 cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <div className="text-2xl">🇬🇧</div>
-                      <div>
-                        <p className="font-bold text-white">Anglais</p>
-                        <p className="text-sm text-gray-400">Courant • Communication professionnelle</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border border-yellow-500/50 rounded-lg p-4 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20 transition duration-300 cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <div className="text-2xl">🇪🇸</div>
-                      <div>
-                        <p className="font-bold text-white">Espagnol</p>
-                        <p className="text-sm text-gray-400">Intermédiaire • Conversationnel</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-bold text-white mb-4 text-lg">Loisirs & Passions</h4>
-                <div className="grid grid-cols-1 gap-3">
-                  <div className="bg-gradient-to-r from-orange-600/20 to-red-600/20 border border-orange-500/50 rounded-lg p-4 hover:border-orange-500 hover:shadow-lg hover:shadow-orange-500/20 transition duration-300 cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <FaFire className="text-2xl text-orange-500" />
-                      <div>
-                        <p className="font-bold text-white">Handball</p>
-                        <p className="text-sm text-gray-400">Sport collectif & passion compétitive</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/50 rounded-lg p-4 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 transition duration-300 cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <FaGamepad className="text-2xl text-purple-500" />
-                      <div>
-                        <p className="font-bold text-white">E-sport</p>
-                        <p className="text-sm text-gray-400">Compétition gaming & stratégie</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/50 rounded-lg p-4 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition duration-300 cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <FaChess className="text-2xl text-blue-500" />
-                      <div>
-                        <p className="font-bold text-white">Échecs</p>
-                        <p className="text-sm text-gray-400">Stratégie & réflexion analytique</p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -320,38 +434,40 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* --- FOOTER --- */}
-      <footer id="contact" className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 border-t border-primary/30">
-        <div className="max-w-5xl mx-auto px-6">
-          {/* Top Section */}
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent">
-              Prêt à lancer un projet ?
+      {/* ═══ CONTACT / FOOTER ═══ */}
+      <footer id="contact" className="py-24 md:py-32 relative mesh-gradient">
+        <div className="blob blob-1" style={{ opacity: 0.08 }}></div>
+        <div className="blob blob-2" style={{ opacity: 0.06 }}></div>
+
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="reveal text-center mb-12">
+            <p className="hero-subtitle text-primary text-xs mb-4 tracking-[0.2em]">Contact</p>
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+              Prêt à lancer<br />
+              <span className="text-primary">un projet ?</span>
             </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="text-zinc-400 max-w-md mx-auto leading-relaxed">
               Disponible en freelance ou CDI sur Lyon et ses environs. Parlons de vos idées et concrétisons votre vision ensemble.
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
-            <a href={`mailto:${profile.email}`} className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-yellow-300 hover:from-yellow-300 hover:to-primary text-secondary font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105">
-              <FaEnvelope className="text-lg group-hover:rotate-12 transition duration-300" />
-              {profile.email}
+          <div className="reveal reveal-delay-1 flex flex-col sm:flex-row justify-center gap-4 mb-16">
+            <a href={`mailto:${profile.email}`} className="btn-primary">
+              <FaEnvelope />
+              <span>{profile.email}</span>
+              <FaArrowRight className="text-xs" />
             </a>
-            <a href="https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105">
-              <FaLinkedin className="text-lg group-hover:rotate-12 transition duration-300" />
-              LinkedIn
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline">
+              <FaLinkedin />
+              <span>LinkedIn</span>
             </a>
           </div>
 
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent mb-8"></div>
+          <div className="gradient-line mb-8"></div>
 
-          {/* Bottom Section */}
-          <div className="text-center">
-            <p className="text-gray-400 mb-2">© {new Date().getFullYear()} Théo Le Sommier</p>
-            <p className="text-xs text-gray-500 tracking-widest">DÉVELOPPEUR WEB & MOBILE • LYON</p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
+            <p>&copy; {new Date().getFullYear()} {profile.name}</p>
+            <p className="font-display tracking-[0.2em] uppercase">Développeur Web & Mobile &bull; Lyon</p>
           </div>
         </div>
       </footer>
