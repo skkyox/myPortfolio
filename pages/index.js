@@ -113,7 +113,7 @@ export default function Portfolio() {
       desc: "Activité freelance variée : création de deux sites e-commerce avec Hydrogen et Shopify, développement de plusieurs sites vitrines, et conception de SaaS dans le cadre de projets personnels.",
     },
     {
-      role: "Développeur Mobile Senior",
+      role: "Développeur React Native",
       company: "SuperConnectr",
       period: "Sept. 2021 — Juin 2024",
       tech: ["React Native", "Expo", "RNPaper", "SendBird"],
