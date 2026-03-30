@@ -274,7 +274,7 @@ export default function Portfolio() {
               {/* Contact info */}
               <div className="reveal reveal-delay-5 flex flex-wrap gap-6 mt-10 text-xs text-zinc-500">
                 <span className="flex items-center gap-2"><FaMapMarkerAlt className="text-primary/50" /> {profile.location}</span>
-                <span className="flex items-center gap-2"><FaEnvelope className="text-primary/50" /> {profile.email}</span>
+                <a href={`mailto:${profile.email}`} className="flex items-center gap-2 hover:text-primary transition-colors"><FaEnvelope className="text-primary/50" /> {profile.email}</a>
                 <span className="flex items-center gap-2"><FaPhone className="text-primary/50" /> {profile.phone}</span>
               </div>
             </div>
