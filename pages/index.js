@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import {
   FaLinkedin,
   FaEnvelope,
@@ -74,6 +76,7 @@ function useActiveSection(sectionIds) {
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
   const containerRef = useReveal();
   const sectionIds = ['hero', 'skills', 'experience', 'education', 'contact'];
   const activeSection = useActiveSection(sectionIds);
@@ -88,11 +91,11 @@ export default function Portfolio() {
 
   const profile = {
     name: "Théo Le Sommier",
-    title: "Développeur Web & Mobile",
+    title: t.hero.title,
     location: "Lyon, 69007",
     phone: "07-86-45-16-43",
     email: "theo@deweto-agency.com",
-    bio: "Développeur de 27 ans expert dans l'écosystème JavaScript. Fort de 6 ans d'expérience, je conçois des applications mobiles et web ultra-performantes grâce à React Native et Next.js. Passionné par l'innovation, j'intègre désormais l'Intelligence Artificielle au cœur de mes projets pour repousser les limites de l'expérience utilisateur.",
+    bio: t.hero.bio,
     linkedin: "https://www.linkedin.com/in/th%C3%A9o-le-sommier-39a8ba116/",
   };
 
@@ -106,66 +109,66 @@ export default function Portfolio() {
 
   const experiences = [
     {
-      role: "Développeur Freelance",
-      company: "DEWETO Agency",
-      period: "Juin 2024 — Aujourd'hui",
+      role: t.experience.roles.freelance.role,
+      company: t.experience.roles.freelance.company,
+      period: t.experience.roles.freelance.period,
       tech: ["Hydrogen", "Shopify", "Next.js", "React Native", "SaaS"],
-      desc: "Activité freelance variée : création de deux sites e-commerce avec Hydrogen et Shopify, développement de plusieurs sites vitrines, et conception de SaaS dans le cadre de projets personnels.",
+      desc: t.experience.roles.freelance.desc,
     },
     {
-      role: "Développeur React Native",
-      company: "SuperConnectr",
-      period: "Sept. 2021 — Juin 2024",
+      role: t.experience.roles.superconnectr.role,
+      company: t.experience.roles.superconnectr.company,
+      period: t.experience.roles.superconnectr.period,
       tech: ["React Native", "Expo", "RNPaper", "SendBird"],
-      desc: "Développement et optimisation d'une application mobile de mise en relation. Implémentation de fonctionnalités critiques et intégration d'un système de messaging temps réel avec SendBird.",
+      desc: t.experience.roles.superconnectr.desc,
     },
     {
-      role: "Développeur Fullstack Freelance",
-      company: "Deweto Agency",
-      period: "Fév. 2020 — Sept. 2021",
+      role: t.experience.roles.deweto.role,
+      company: t.experience.roles.deweto.company,
+      period: t.experience.roles.deweto.period,
       tech: ["WordPress", "PrestaShop", "Dev From Scratch"],
-      desc: "Conception et déploiement de sites e-commerce et vitrines commerciales. Configuration de catalogues produits, systèmes de paiement et optimisation de taux de conversion.",
+      desc: t.experience.roles.deweto.desc,
     },
     {
-      role: "Développeur Web (Alternance)",
-      company: "NoShow / Park4night / Izypay",
-      period: "2018 — 2020",
+      role: t.experience.roles.alternance.role,
+      company: t.experience.roles.alternance.company,
+      period: t.experience.roles.alternance.period,
       tech: ["VueJS", "Laravel", "PHP", "jQuery", "Symfony"],
-      desc: "Parcours d'alternances enrichissant chez trois startups innovantes. Développement d'interfaces utilisateur dynamiques avec VueJS, architecture backend robuste avec Laravel et Symfony.",
+      desc: t.experience.roles.alternance.desc,
     },
   ];
 
   const education = [
-    { degree: "Mastère Expert en Stratégie Digitale", school: "Digital Campus, Lyon", year: "2018—2020", color: "#a855f7" },
-    { degree: "Bachelor Concepteur Réalisateur Web", school: "Sciences U, Lyon", year: "2017—2018", color: "#3b82f6" },
-    { degree: "BTS Système Numérique", school: "Lycée Saint Michel, Annecy", year: "2017", color: "#22c55e" },
+    { degree: t.education.degrees.master, school: "Digital Campus, Lyon", year: "2018—2020", color: "#a855f7" },
+    { degree: t.education.degrees.bachelor, school: "Sciences U, Lyon", year: "2017—2018", color: "#3b82f6" },
+    { degree: t.education.degrees.bts, school: "Lycée Saint Michel, Annecy", year: "2017", color: "#22c55e" },
   ];
 
   const languages = [
-    { name: "Français", level: "Natif", flag: "🇫🇷" },
-    { name: "Anglais", level: "Courant", flag: "🇬🇧" },
-    { name: "Espagnol", level: "Intermédiaire", flag: "🇪🇸" },
+    { name: t.interests.langFr, level: t.interests.langFrLevel, flag: "🇫🇷" },
+    { name: t.interests.langEn, level: t.interests.langEnLevel, flag: "🇬🇧" },
+    { name: t.interests.langEs, level: t.interests.langEsLevel, flag: "🇪🇸" },
   ];
 
   const hobbies = [
-    { name: "Handball", desc: "Sport collectif & passion compétitive", icon: <FaFire />, color: "#f97316" },
-    { name: "E-sport", desc: "Compétition gaming & stratégie", icon: <FaGamepad />, color: "#a855f7" },
-    { name: "Échecs", desc: "Stratégie & réflexion analytique", icon: <FaChess />, color: "#3b82f6" },
+    { name: t.interests.handball, desc: t.interests.handballDesc, icon: <FaFire />, color: "#f97316" },
+    { name: t.interests.esport, desc: t.interests.esportDesc, icon: <FaGamepad />, color: "#a855f7" },
+    { name: t.interests.chess, desc: t.interests.chessDesc, icon: <FaChess />, color: "#3b82f6" },
   ];
 
   const navLinks = [
-    { id: "skills", label: "Stack" },
-    { id: "experience", label: "Expérience" },
-    { id: "education", label: "Formation" },
-    { id: "realisations", label: "Réalisations", href: "/realisations" },
-    { id: "contact", label: "Contact" },
+    { id: "skills", label: t.nav.stack },
+    { id: "experience", label: t.nav.experience },
+    { id: "education", label: t.nav.education },
+    { id: "realisations", label: t.nav.realisations, href: "/realisations" },
+    { id: "contact", label: t.nav.contact },
   ];
 
   return (
     <div ref={containerRef} className="grain">
       <Head>
         <title>{`${profile.name} — ${profile.title}`}</title>
-        <meta name="description" content={`Portfolio de ${profile.name}, ${profile.title} basé à Lyon.`} />
+        <meta name="description" content={`${profile.name}, ${profile.title} — Lyon`} />
       </Head>
 
       {/* ═══ NAVIGATION ═══ */}
@@ -187,6 +190,7 @@ export default function Portfolio() {
                 {link.label}
               </a>
             ))}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile burger */}
@@ -210,6 +214,7 @@ export default function Portfolio() {
             {link.label}
           </a>
         ))}
+        <LanguageSwitcher />
       </div>
 
       {/* ═══ HERO ═══ */}
@@ -223,7 +228,7 @@ export default function Portfolio() {
             {/* Left content */}
             <div className="order-2 md:order-1">
               <div className="reveal">
-                <p className="hero-subtitle text-primary text-xs mb-6 tracking-[0.2em]">Portfolio 2024</p>
+                <p className="hero-subtitle text-primary text-xs mb-6 tracking-[0.2em]">{t.hero.subtitle}</p>
               </div>
 
               <h1 className="reveal reveal-delay-1 hero-title text-5xl sm:text-6xl lg:text-7xl text-white mb-6">
@@ -247,15 +252,15 @@ export default function Portfolio() {
               <div className="reveal reveal-delay-3 flex gap-10 mb-10">
                 <div>
                   <div className="stat-number">6+</div>
-                  <div className="stat-label">Ans d'XP</div>
+                  <div className="stat-label">{t.hero.yearsXp}</div>
                 </div>
                 <div>
                   <div className="stat-number">20+</div>
-                  <div className="stat-label">Projets</div>
+                  <div className="stat-label">{t.hero.projects}</div>
                 </div>
                 <div>
                   <div className="stat-number">3</div>
-                  <div className="stat-label">Startups</div>
+                  <div className="stat-label">{t.hero.startups}</div>
                 </div>
               </div>
 
@@ -263,7 +268,7 @@ export default function Portfolio() {
               <div className="reveal reveal-delay-4 flex flex-wrap gap-4">
                 <a href={`mailto:${profile.email}`} className="btn-primary">
                   <FaEnvelope />
-                  <span>Me Contacter</span>
+                  <span>{t.hero.contactMe}</span>
                 </a>
                 <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline">
                   <FaLinkedin />
@@ -294,7 +299,7 @@ export default function Portfolio() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-600 text-xs">
-          <span className="font-display tracking-widest uppercase text-[10px]">Scroll</span>
+          <span className="font-display tracking-widest uppercase text-[10px]">{t.hero.scroll}</span>
           <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent animate-pulse-slow"></div>
         </div>
       </section>
@@ -305,8 +310,8 @@ export default function Portfolio() {
           <div className="reveal mb-16">
             <div className="section-heading">
               <span className="heading-accent">01</span>
-              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Compétences</p>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Stack Technique</h2>
+              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">{t.skills.subtitle}</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white">{t.skills.title}</h2>
             </div>
           </div>
 
@@ -329,8 +334,8 @@ export default function Portfolio() {
           <div className="reveal mb-16">
             <div className="section-heading">
               <span className="heading-accent">02</span>
-              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Parcours</p>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Expérience</h2>
+              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">{t.experience.subtitle}</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white">{t.experience.title}</h2>
             </div>
           </div>
 
@@ -348,8 +353,8 @@ export default function Portfolio() {
                   </div>
                   <p className="text-zinc-400 text-sm leading-relaxed mb-4">{exp.desc}</p>
                   <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((t, i) => (
-                      <span key={i} className="tech-tag">{t}</span>
+                    {exp.tech.map((tech, i) => (
+                      <span key={i} className="tech-tag">{tech}</span>
                     ))}
                   </div>
                 </div>
@@ -368,8 +373,8 @@ export default function Portfolio() {
               <div className="reveal mb-10">
                 <div className="section-heading">
                   <span className="heading-accent">03</span>
-                  <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Études</p>
-                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Formation</h2>
+                  <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">{t.education.subtitle}</p>
+                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white">{t.education.title}</h2>
                 </div>
               </div>
 
@@ -393,14 +398,14 @@ export default function Portfolio() {
               <div className="reveal mb-10">
                 <div className="section-heading">
                   <span className="heading-accent">&</span>
-                  <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Personnel</p>
-                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Langues & Intérêts</h2>
+                  <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">{t.interests.subtitle}</p>
+                  <h2 className="text-4xl md:text-5xl font-display font-bold text-white">{t.interests.title}</h2>
                 </div>
               </div>
 
               {/* Languages */}
               <div className="mb-8">
-                <h4 className="reveal font-display font-semibold text-xs tracking-[0.15em] uppercase text-zinc-500 mb-4">Langues</h4>
+                <h4 className="reveal font-display font-semibold text-xs tracking-[0.15em] uppercase text-zinc-500 mb-4">{t.interests.languages}</h4>
                 <div className="flex flex-wrap gap-3">
                   {languages.map((lang, idx) => (
                     <div key={idx} className={`reveal reveal-delay-${idx + 1} glass rounded-full px-5 py-2.5 flex items-center gap-2.5 hover:border-primary/20 transition-all duration-300`}>
@@ -416,7 +421,7 @@ export default function Portfolio() {
 
               {/* Hobbies */}
               <div>
-                <h4 className="reveal font-display font-semibold text-xs tracking-[0.15em] uppercase text-zinc-500 mb-4">Passions</h4>
+                <h4 className="reveal font-display font-semibold text-xs tracking-[0.15em] uppercase text-zinc-500 mb-4">{t.interests.passions}</h4>
                 <div className="space-y-3">
                   {hobbies.map((hobby, idx) => (
                     <div key={idx} className={`reveal reveal-delay-${idx + 1} interest-pill`}>
@@ -441,13 +446,13 @@ export default function Portfolio() {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="reveal text-center mb-12">
-            <p className="hero-subtitle text-primary text-xs mb-4 tracking-[0.2em]">Contact</p>
+            <p className="hero-subtitle text-primary text-xs mb-4 tracking-[0.2em]">{t.contact.subtitle}</p>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-              Prêt à lancer<br />
-              <span className="text-primary">un projet ?</span>
+              {t.contact.title1}<br />
+              <span className="text-primary">{t.contact.title2}</span>
             </h2>
             <p className="text-zinc-400 max-w-md mx-auto leading-relaxed">
-              Disponible en freelance ou CDI sur Lyon et ses environs. Parlons de vos idées et concrétisons votre vision ensemble.
+              {t.contact.description}
             </p>
           </div>
 
@@ -467,7 +472,7 @@ export default function Portfolio() {
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
             <p>&copy; {new Date().getFullYear()} {profile.name}</p>
-            <p className="font-display tracking-[0.2em] uppercase">Développeur Web & Mobile &bull; Lyon</p>
+            <p className="font-display tracking-[0.2em] uppercase">{t.contact.footer} &bull; Lyon</p>
           </div>
         </div>
       </footer>
