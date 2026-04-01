@@ -96,6 +96,7 @@
     "projectsCount": "Projects",
     "ecommerce": "E-commerce",
     "showcase": "Showcase",
+    "saas": "SaaS",
     "technologies": "Technologies",
     "visitSite": "Visit site",
     "ctaSubtitle": "Next project?",
@@ -124,6 +125,26 @@
         "subtitle": "Agency Showcase Site",
         "description": "Showcase site for my personal web agency. Modern and clean design with fluid animations, services presentation, portfolio of projects and contact form. Optimized for conversion and SEO.",
         "type": "Showcase"
+      },
+      "tokima": {
+        "subtitle": "AI-Powered Diary",
+        "description": "An augmented personal diary powered by AI. Write freely and let artificial intelligence ask you the right questions, help you reflect on your thoughts, and remember what matters. A unique and intimate writing experience.",
+        "type": "SaaS"
+      },
+      "callMeMaybe": {
+        "subtitle": "Cold Calling Assistant",
+        "description": "Personal project to streamline cold calling. Customizable scripts, structured call flows, and prospect type selection to help sales teams be more efficient and confident on every call.",
+        "type": "SaaS"
+      },
+      "leadScraper": {
+        "subtitle": "Google Maps Lead Finder",
+        "description": "Lead generation tool that searches Google Maps by trade and city. Instantly identify local businesses without a website and build targeted prospect lists to grow your agency.",
+        "type": "SaaS"
+      },
+      "boostMyClass": {
+        "subtitle": "AI Course Generator for Teachers",
+        "description": "Platform that enables teachers to generate structured courses and differentiated exercises in seconds. AI that understands the needs of educators, saving hours of lesson preparation.",
+        "type": "SaaS"
       }
     }
   }

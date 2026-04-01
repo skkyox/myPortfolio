@@ -11,7 +11,7 @@ import {
   FaTimes,
   FaExternalLinkAlt,
 } from 'react-icons/fa';
-import { SiShopify, SiReact, SiNextdotjs, SiTailwindcss, SiFramer } from 'react-icons/si';
+import { SiShopify, SiReact, SiNextdotjs, SiTailwindcss, SiFramer, SiSupabase, SiPrisma, SiOpenai } from 'react-icons/si';
 
 // ─── Scroll reveal hook ───
 function useReveal() {
@@ -111,6 +111,67 @@ export default function Realisations() {
       type: t.realisations.projects.dewetoAgency.type,
       url: 'https://deweto-agency.com/',
     },
+    {
+      id: 'tokima',
+      name: 'Tokima',
+      subtitle: t.realisations.projects.tokima.subtitle,
+      description: t.realisations.projects.tokima.description,
+      image: '/realisations/tokima.png',
+      tech: [
+        { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'Supabase', icon: <SiSupabase /> },
+        { name: 'Prisma', icon: <SiPrisma /> },
+        { name: 'TailwindCSS', icon: <SiTailwindcss /> },
+      ],
+      color: '#b5856d',
+      year: '2026',
+      type: t.realisations.projects.tokima.type,
+    },
+    {
+      id: 'callmemaybe',
+      name: 'CallMeMaybe',
+      subtitle: t.realisations.projects.callMeMaybe.subtitle,
+      description: t.realisations.projects.callMeMaybe.description,
+      image: '/realisations/callmemaybe.png',
+      tech: [
+        { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'TailwindCSS', icon: <SiTailwindcss /> },
+      ],
+      color: '#f59e0b',
+      year: '2026',
+      type: t.realisations.projects.callMeMaybe.type,
+      url: 'https://call-me-maybe-beta.vercel.app/',
+    },
+    {
+      id: 'leadscraper',
+      name: 'LeadScraper Pro',
+      subtitle: t.realisations.projects.leadScraper.subtitle,
+      description: t.realisations.projects.leadScraper.description,
+      image: '/realisations/leadscraper.png',
+      tech: [
+        { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'TailwindCSS', icon: <SiTailwindcss /> },
+      ],
+      color: '#4f46e5',
+      year: '2026',
+      type: t.realisations.projects.leadScraper.type,
+    },
+    {
+      id: 'boostmyclass',
+      name: 'BoostMyClass',
+      subtitle: t.realisations.projects.boostMyClass.subtitle,
+      description: t.realisations.projects.boostMyClass.description,
+      image: '/realisations/boostmyclass.png',
+      tech: [
+        { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'Supabase', icon: <SiSupabase /> },
+        { name: 'Prisma', icon: <SiPrisma /> },
+        { name: 'TailwindCSS', icon: <SiTailwindcss /> },
+      ],
+      color: '#c026d3',
+      year: '2026',
+      type: t.realisations.projects.boostMyClass.type,
+    },
   ];
 
   const navLinks = [
@@ -204,7 +265,7 @@ export default function Realisations() {
           {/* Stats */}
           <div className="reveal reveal-delay-3 flex gap-10 mt-10">
             <div>
-              <div className="stat-number">3</div>
+              <div className="stat-number">7</div>
               <div className="stat-label">{t.realisations.projectsCount}</div>
             </div>
             <div>
@@ -212,8 +273,8 @@ export default function Realisations() {
               <div className="stat-label">{t.realisations.ecommerce}</div>
             </div>
             <div>
-              <div className="stat-number">1</div>
-              <div className="stat-label">{t.realisations.showcase}</div>
+              <div className="stat-number">4</div>
+              <div className="stat-label">{t.realisations.saas}</div>
             </div>
           </div>
         </div>
@@ -238,14 +299,9 @@ export default function Realisations() {
                 <div className={`project-showcase__grid ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
                   {/* Screenshot */}
                   <div className="project-showcase__image-wrap">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-showcase__image-frame block cursor-pointer"
-                      style={{
-                        '--project-color': project.color,
-                      }}
+                    <div
+                      className="project-showcase__image-frame block"
+                      style={{ '--project-color': project.color }}
                     >
                       {/* Browser chrome */}
                       <div className="project-showcase__browser-bar">
@@ -255,7 +311,7 @@ export default function Realisations() {
                           <span style={{ background: '#28c840' }}></span>
                         </div>
                         <div className="project-showcase__browser-url">
-                          <span>{project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+                          <span>{project.url ? project.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.name}</span>
                         </div>
                       </div>
                       <div className="project-showcase__screenshot">
@@ -270,7 +326,7 @@ export default function Realisations() {
                         className="project-showcase__glow"
                         style={{ background: `radial-gradient(ellipse at center, ${project.color}20, transparent 70%)` }}
                       ></div>
-                    </a>
+                    </div>
                   </div>
 
                   {/* Info */}
@@ -310,17 +366,19 @@ export default function Realisations() {
                     </div>
 
                     {/* Visit link */}
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary inline-flex"
-                      style={{ background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)` }}
-                    >
-                      <FaExternalLinkAlt className="text-xs" />
-                      <span>{t.realisations.visitSite}</span>
-                      <FaArrowRight className="text-xs" />
-                    </a>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary inline-flex"
+                        style={{ background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)` }}
+                      >
+                        <FaExternalLinkAlt className="text-xs" />
+                        <span>{t.realisations.visitSite}</span>
+                        <FaArrowRight className="text-xs" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

@@ -96,6 +96,7 @@
     "projectsCount": "Projets",
     "ecommerce": "E-commerce",
     "showcase": "Site Vitrine",
+    "saas": "SaaS",
     "technologies": "Technologies",
     "visitSite": "Voir le site",
     "ctaSubtitle": "Prochain projet ?",
@@ -124,6 +125,26 @@
         "subtitle": "Site Vitrine Agence",
         "description": "Site vitrine pour mon agence web personnelle. Design moderne et épuré avec des animations fluides, présentation des services, portfolio de réalisations et formulaire de contact. Optimisé pour la conversion et le référencement.",
         "type": "Site Vitrine"
+      },
+      "tokima": {
+        "subtitle": "Journal Intime augmenté par IA",
+        "description": "Un journal intime augmenté par l'intelligence artificielle. Écrivez librement et laissez l'IA vous poser les bonnes questions, vous aider à réfléchir sur vos pensées et retenir ce qui compte. Une expérience d'écriture unique et intime.",
+        "type": "SaaS"
+      },
+      "callMeMaybe": {
+        "subtitle": "Assistant de Cold Calling",
+        "description": "Projet personnel pour faciliter le cold calling. Scripts personnalisables, trames d'appel structurées et sélection du type de prospect pour aider les commerciaux à être plus efficaces et confiants à chaque appel.",
+        "type": "SaaS"
+      },
+      "leadScraper": {
+        "subtitle": "Recherche de Leads Google Maps",
+        "description": "Outil de génération de leads qui recherche sur Google Maps par métier et ville. Identifiez instantanément les établissements locaux sans site web et construisez des listes de prospects ciblées pour développer votre agence.",
+        "type": "SaaS"
+      },
+      "boostMyClass": {
+        "subtitle": "Générateur de Cours IA pour Profs",
+        "description": "Plateforme qui permet aux enseignants de générer des cours structurés et des exercices différenciés en quelques secondes. L'IA qui comprend les besoins des enseignants français, économisant des heures de préparation de cours.",
+        "type": "SaaS"
       }
     }
   }
