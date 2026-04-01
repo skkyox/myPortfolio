@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import {
   FaLinkedin,
   FaEnvelope,
@@ -40,6 +42,7 @@ function useReveal() {
 }
 
 export default function Realisations() {
+  const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
@@ -63,9 +66,8 @@ export default function Realisations() {
     {
       id: 'plots-terrasse',
       name: 'Plots & Terrasse',
-      subtitle: 'E-commerce Shopify',
-      description:
-        "Site e-commerce complet pour la vente de plots reglables et equipements de terrasse. Interface intuitive avec calculateur de plots integre, catalogue produit avance et experience d'achat optimisee pour les professionnels et particuliers.",
+      subtitle: t.realisations.projects.plotsTerrasse.subtitle,
+      description: t.realisations.projects.plotsTerrasse.description,
       image: '/realisations/plots-et-terrasse.png',
       tech: [
         { name: 'Shopify', icon: <SiShopify /> },
@@ -74,15 +76,14 @@ export default function Realisations() {
       ],
       color: '#f97316',
       year: '2026',
-      type: 'E-commerce',
+      type: t.realisations.projects.plotsTerrasse.type,
       url: 'https://plotsetterrasse.fr/',
     },
     {
       id: 'bullehit-vape',
       name: 'BulleHit Vape',
-      subtitle: 'E-commerce Shopify',
-      description:
-        "Boutique en ligne premium pour produits de vape. Design immersif avec un univers visuel sombre et colore, catalogue produit avec filtres avances, et integration boutique physique Lyon 7e. Experience utilisateur soignee du browsing au checkout.",
+      subtitle: t.realisations.projects.bullehitVape.subtitle,
+      description: t.realisations.projects.bullehitVape.description,
       image: '/realisations/bullehitvape.png',
       tech: [
         { name: 'Shopify', icon: <SiShopify /> },
@@ -91,15 +92,14 @@ export default function Realisations() {
       ],
       color: '#a855f7',
       year: '2026',
-      type: 'E-commerce',
+      type: t.realisations.projects.bullehitVape.type,
       url: 'https://bullehit-vape.fr/',
     },
     {
       id: 'deweto-agency',
       name: 'Deweto Agency',
-      subtitle: 'Site Vitrine Agence',
-      description:
-        "Site vitrine pour mon agence web personnelle. Design moderne et epure avec des animations fluides, presentation des services, portfolio de realisations et formulaire de contact. Optimise pour la conversion et le referencement.",
+      subtitle: t.realisations.projects.dewetoAgency.subtitle,
+      description: t.realisations.projects.dewetoAgency.description,
       image: '/realisations/deweto-agency.png',
       tech: [
         { name: 'Next.js', icon: <SiNextdotjs /> },
@@ -108,22 +108,22 @@ export default function Realisations() {
       ],
       color: '#06b6d4',
       year: '2026',
-      type: 'Site Vitrine',
+      type: t.realisations.projects.dewetoAgency.type,
       url: 'https://deweto-agency.com/',
     },
   ];
 
   const navLinks = [
-    { href: "/", label: "Accueil" },
-    { href: "#projets", label: "Projets" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: t.realisations.nav.home },
+    { href: "#projets", label: t.realisations.nav.projects },
+    { href: "#contact", label: t.realisations.nav.contact },
   ];
 
   return (
     <div ref={containerRef} className="grain">
       <Head>
-        <title>Realisations — Theo Le Sommier</title>
-        <meta name="description" content="Decouvrez mes realisations : sites e-commerce Shopify Hydrogen, sites vitrines Next.js et applications web sur mesure." />
+        <title>{`${t.realisations.title2} — ${profile.name}`}</title>
+        <meta name="description" content={t.realisations.description} />
       </Head>
 
       {/* ═══ NAVIGATION ═══ */}
@@ -145,6 +145,7 @@ export default function Realisations() {
                 {link.label}
               </a>
             ))}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile burger */}
@@ -168,6 +169,7 @@ export default function Realisations() {
             {link.label}
           </a>
         ))}
+        <LanguageSwitcher />
       </div>
 
       {/* ═══ HERO ═══ */}
@@ -180,38 +182,38 @@ export default function Realisations() {
           <div className="reveal">
             <a href="/" className="inline-flex items-center gap-2 text-primary text-sm font-display font-semibold tracking-wider uppercase mb-8 hover:gap-3 transition-all duration-300">
               <FaArrowLeft className="text-xs" />
-              <span>Retour au portfolio</span>
+              <span>{t.realisations.backToPortfolio}</span>
             </a>
           </div>
 
           <div className="reveal reveal-delay-1">
             <div className="section-heading mb-4">
               <span className="heading-accent">04</span>
-              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">Portfolio</p>
+              <p className="hero-subtitle text-primary text-xs mb-3 tracking-[0.2em]">{t.realisations.subtitle}</p>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-white" style={{ lineHeight: '0.95', letterSpacing: '-0.03em' }}>
-                Mes<br />
-                <span className="text-primary">Realisations</span>
+                {t.realisations.title1}<br />
+                <span className="text-primary">{t.realisations.title2}</span>
               </h1>
             </div>
           </div>
 
           <p className="reveal reveal-delay-2 text-zinc-400 text-base leading-relaxed max-w-lg mt-8">
-            Une selection de projets recents illustrant mon expertise en developpement e-commerce Shopify et creation de sites web modernes.
+            {t.realisations.description}
           </p>
 
           {/* Stats */}
           <div className="reveal reveal-delay-3 flex gap-10 mt-10">
             <div>
               <div className="stat-number">3</div>
-              <div className="stat-label">Projets</div>
+              <div className="stat-label">{t.realisations.projectsCount}</div>
             </div>
             <div>
               <div className="stat-number">2</div>
-              <div className="stat-label">E-commerce</div>
+              <div className="stat-label">{t.realisations.ecommerce}</div>
             </div>
             <div>
               <div className="stat-number">1</div>
-              <div className="stat-label">Site Vitrine</div>
+              <div className="stat-label">{t.realisations.showcase}</div>
             </div>
           </div>
         </div>
@@ -292,16 +294,16 @@ export default function Realisations() {
 
                     {/* Tech stack */}
                     <div className="mb-8">
-                      <p className="text-xs font-display font-semibold tracking-[0.15em] uppercase text-zinc-500 mb-3">Technologies</p>
+                      <p className="text-xs font-display font-semibold tracking-[0.15em] uppercase text-zinc-500 mb-3">{t.realisations.technologies}</p>
                       <div className="flex flex-wrap gap-3">
-                        {project.tech.map((t, i) => (
+                        {project.tech.map((tech, i) => (
                           <div
                             key={i}
                             className="project-tech-pill"
                             style={{ '--pill-color': project.color }}
                           >
-                            <span className="text-base" style={{ color: project.color }}>{t.icon}</span>
-                            <span className="text-sm font-medium text-zinc-300">{t.name}</span>
+                            <span className="text-base" style={{ color: project.color }}>{tech.icon}</span>
+                            <span className="text-sm font-medium text-zinc-300">{tech.name}</span>
                           </div>
                         ))}
                       </div>
@@ -316,7 +318,7 @@ export default function Realisations() {
                       style={{ background: `linear-gradient(135deg, ${project.color}, ${project.color}cc)` }}
                     >
                       <FaExternalLinkAlt className="text-xs" />
-                      <span>Voir le site</span>
+                      <span>{t.realisations.visitSite}</span>
                       <FaArrowRight className="text-xs" />
                     </a>
                   </div>
@@ -333,18 +335,18 @@ export default function Realisations() {
           <div className="reveal cta-card">
             <div className="cta-card__inner">
               <div className="text-center">
-                <p className="hero-subtitle text-primary text-xs mb-4 tracking-[0.2em]">Prochain projet ?</p>
+                <p className="hero-subtitle text-primary text-xs mb-4 tracking-[0.2em]">{t.realisations.ctaSubtitle}</p>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                  Vous avez un projet<br />
-                  <span className="text-primary">similaire ?</span>
+                  {t.realisations.ctaTitle1}<br />
+                  <span className="text-primary">{t.realisations.ctaTitle2}</span>
                 </h2>
                 <p className="text-zinc-400 max-w-md mx-auto leading-relaxed mb-10">
-                  E-commerce, site vitrine ou application sur mesure — discutons de votre projet et donnons-lui vie ensemble.
+                  {t.realisations.ctaDescription}
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <a href={`mailto:${profile.email}`} className="btn-primary">
                     <FaEnvelope />
-                    <span>Me Contacter</span>
+                    <span>{t.realisations.contactMe}</span>
                     <FaArrowRight className="text-xs" />
                   </a>
                   <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn-outline">
@@ -364,7 +366,7 @@ export default function Realisations() {
           <div className="gradient-line mb-8"></div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
             <p>&copy; {new Date().getFullYear()} {profile.name}</p>
-            <p className="font-display tracking-[0.2em] uppercase">Developpeur Web & Mobile &bull; Lyon</p>
+            <p className="font-display tracking-[0.2em] uppercase">{t.realisations.footer} &bull; Lyon</p>
           </div>
         </div>
       </footer>
