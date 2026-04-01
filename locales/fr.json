@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "stack": "Stack",
+    "experience": "Expérience",
+    "education": "Formation",
+    "realisations": "Réalisations",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Portfolio 2024",
+    "title": "Développeur Web & Mobile",
+    "bio": "Développeur de 27 ans expert dans l'écosystème JavaScript. Fort de 6 ans d'expérience, je conçois des applications mobiles et web ultra-performantes grâce à React Native et Next.js. Passionné par l'innovation, j'intègre désormais l'Intelligence Artificielle au cœur de mes projets pour repousser les limites de l'expérience utilisateur.",
+    "yearsXp": "Ans d'XP",
+    "projects": "Projets",
+    "startups": "Startups",
+    "contactMe": "Me Contacter",
+    "scroll": "Scroll"
+  },
+  "skills": {
+    "sectionNumber": "01",
+    "subtitle": "Compétences",
+    "title": "Stack Technique"
+  },
+  "experience": {
+    "sectionNumber": "02",
+    "subtitle": "Parcours",
+    "title": "Expérience",
+    "roles": {
+      "freelance": {
+        "role": "Développeur Freelance",
+        "company": "DEWETO Agency",
+        "period": "Juin 2024 — Aujourd'hui",
+        "desc": "Activité freelance variée : création de deux sites e-commerce avec Hydrogen et Shopify, développement de plusieurs sites vitrines, et conception de SaaS dans le cadre de projets personnels."
+      },
+      "superconnectr": {
+        "role": "Développeur React Native",
+        "company": "SuperConnectr",
+        "period": "Sept. 2021 — Juin 2024",
+        "desc": "Développement et optimisation d'une application mobile de mise en relation. Implémentation de fonctionnalités critiques et intégration d'un système de messaging temps réel avec SendBird."
+      },
+      "deweto": {
+        "role": "Développeur Fullstack Freelance",
+        "company": "Deweto Agency",
+        "period": "Fév. 2020 — Sept. 2021",
+        "desc": "Conception et déploiement de sites e-commerce et vitrines commerciales. Configuration de catalogues produits, systèmes de paiement et optimisation de taux de conversion."
+      },
+      "alternance": {
+        "role": "Développeur Web (Alternance)",
+        "company": "NoShow / Park4night / Izypay",
+        "period": "2018 — 2020",
+        "desc": "Parcours d'alternances enrichissant chez trois startups innovantes. Développement d'interfaces utilisateur dynamiques avec VueJS, architecture backend robuste avec Laravel et Symfony."
+      }
+    }
+  },
+  "education": {
+    "sectionNumber": "03",
+    "subtitle": "Études",
+    "title": "Formation",
+    "degrees": {
+      "master": "Mastère Expert en Stratégie Digitale",
+      "bachelor": "Bachelor Concepteur Réalisateur Web",
+      "bts": "BTS Système Numérique"
+    }
+  },
+  "interests": {
+    "subtitle": "Personnel",
+    "title": "Langues & Intérêts",
+    "languages": "Langues",
+    "passions": "Passions",
+    "langFr": "Français",
+    "langFrLevel": "Natif",
+    "langEn": "Anglais",
+    "langEnLevel": "Courant",
+    "langEs": "Espagnol",
+    "langEsLevel": "Intermédiaire",
+    "handball": "Handball",
+    "handballDesc": "Sport collectif & passion compétitive",
+    "esport": "E-sport",
+    "esportDesc": "Compétition gaming & stratégie",
+    "chess": "Échecs",
+    "chessDesc": "Stratégie & réflexion analytique"
+  },
+  "contact": {
+    "subtitle": "Contact",
+    "title1": "Prêt à lancer",
+    "title2": "un projet ?",
+    "description": "Disponible en freelance ou CDI sur Lyon et ses environs. Parlons de vos idées et concrétisons votre vision ensemble.",
+    "footer": "Développeur Web & Mobile"
+  },
+  "realisations": {
+    "backToPortfolio": "Retour au portfolio",
+    "subtitle": "Portfolio",
+    "title1": "Mes",
+    "title2": "Réalisations",
+    "description": "Une sélection de projets récents illustrant mon expertise en développement e-commerce Shopify et création de sites web modernes.",
+    "projectsCount": "Projets",
+    "ecommerce": "E-commerce",
+    "showcase": "Site Vitrine",
+    "technologies": "Technologies",
+    "visitSite": "Voir le site",
+    "ctaSubtitle": "Prochain projet ?",
+    "ctaTitle1": "Vous avez un projet",
+    "ctaTitle2": "similaire ?",
+    "ctaDescription": "E-commerce, site vitrine ou application sur mesure — discutons de votre projet et donnons-lui vie ensemble.",
+    "contactMe": "Me Contacter",
+    "footer": "Développeur Web & Mobile",
+    "nav": {
+      "home": "Accueil",
+      "projects": "Projets",
+      "contact": "Contact"
+    },
+    "projects": {
+      "plotsTerrasse": {
+        "subtitle": "E-commerce Shopify",
+        "description": "Site e-commerce complet pour la vente de plots réglables et équipements de terrasse. Interface intuitive avec calculateur de plots intégré, catalogue produit avancé et expérience d'achat optimisée pour les professionnels et particuliers.",
+        "type": "E-commerce"
+      },
+      "bullehitVape": {
+        "subtitle": "E-commerce Shopify",
+        "description": "Boutique en ligne premium pour produits de vape. Design immersif avec un univers visuel sombre et coloré, catalogue produit avec filtres avancés, et intégration boutique physique Lyon 7e. Expérience utilisateur soignée du browsing au checkout.",
+        "type": "E-commerce"
+      },
+      "dewetoAgency": {
+        "subtitle": "Site Vitrine Agence",
+        "description": "Site vitrine pour mon agence web personnelle. Design moderne et épuré avec des animations fluides, présentation des services, portfolio de réalisations et formulaire de contact. Optimisé pour la conversion et le référencement.",
+        "type": "Site Vitrine"
+      }
+    }
+  }
+}

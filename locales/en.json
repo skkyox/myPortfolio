@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "stack": "Stack",
+    "experience": "Experience",
+    "education": "Education",
+    "realisations": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Portfolio 2024",
+    "title": "Web & Mobile Developer",
+    "bio": "27-year-old developer expert in the JavaScript ecosystem. With 6 years of experience, I build ultra-performant mobile and web applications using React Native and Next.js. Passionate about innovation, I now integrate Artificial Intelligence into my projects to push the boundaries of user experience.",
+    "yearsXp": "Years of XP",
+    "projects": "Projects",
+    "startups": "Startups",
+    "contactMe": "Contact Me",
+    "scroll": "Scroll"
+  },
+  "skills": {
+    "sectionNumber": "01",
+    "subtitle": "Skills",
+    "title": "Tech Stack"
+  },
+  "experience": {
+    "sectionNumber": "02",
+    "subtitle": "Career",
+    "title": "Experience",
+    "roles": {
+      "freelance": {
+        "role": "Freelance Developer",
+        "company": "DEWETO Agency",
+        "period": "Jun 2024 — Present",
+        "desc": "Diverse freelance work: creation of two e-commerce sites with Hydrogen and Shopify, development of several showcase websites, and design of SaaS products as personal projects."
+      },
+      "superconnectr": {
+        "role": "React Native Developer",
+        "company": "SuperConnectr",
+        "period": "Sep 2021 — Jun 2024",
+        "desc": "Development and optimization of a mobile networking app. Implementation of critical features and integration of a real-time messaging system with SendBird."
+      },
+      "deweto": {
+        "role": "Fullstack Freelance Developer",
+        "company": "Deweto Agency",
+        "period": "Feb 2020 — Sep 2021",
+        "desc": "Design and deployment of e-commerce and business showcase sites. Product catalog configuration, payment systems, and conversion rate optimization."
+      },
+      "alternance": {
+        "role": "Web Developer (Work-Study)",
+        "company": "NoShow / Park4night / Izypay",
+        "period": "2018 — 2020",
+        "desc": "Enriching work-study path across three innovative startups. Dynamic UI development with VueJS, robust backend architecture with Laravel and Symfony."
+      }
+    }
+  },
+  "education": {
+    "sectionNumber": "03",
+    "subtitle": "Studies",
+    "title": "Education",
+    "degrees": {
+      "master": "Master's in Digital Strategy",
+      "bachelor": "Bachelor in Web Design & Development",
+      "bts": "BTS Digital Systems"
+    }
+  },
+  "interests": {
+    "subtitle": "Personal",
+    "title": "Languages & Interests",
+    "languages": "Languages",
+    "passions": "Passions",
+    "langFr": "French",
+    "langFrLevel": "Native",
+    "langEn": "English",
+    "langEnLevel": "Fluent",
+    "langEs": "Spanish",
+    "langEsLevel": "Intermediate",
+    "handball": "Handball",
+    "handballDesc": "Team sport & competitive passion",
+    "esport": "E-sport",
+    "esportDesc": "Competitive gaming & strategy",
+    "chess": "Chess",
+    "chessDesc": "Strategy & analytical thinking"
+  },
+  "contact": {
+    "subtitle": "Contact",
+    "title1": "Ready to start",
+    "title2": "a project?",
+    "description": "Available as a freelancer or full-time in Lyon and surroundings. Let's talk about your ideas and bring your vision to life together.",
+    "footer": "Web & Mobile Developer"
+  },
+  "realisations": {
+    "backToPortfolio": "Back to portfolio",
+    "subtitle": "Portfolio",
+    "title1": "My",
+    "title2": "Projects",
+    "description": "A selection of recent projects showcasing my expertise in Shopify e-commerce development and modern web creation.",
+    "projectsCount": "Projects",
+    "ecommerce": "E-commerce",
+    "showcase": "Showcase",
+    "technologies": "Technologies",
+    "visitSite": "Visit site",
+    "ctaSubtitle": "Next project?",
+    "ctaTitle1": "Have a similar",
+    "ctaTitle2": "project?",
+    "ctaDescription": "E-commerce, showcase site or custom application — let's discuss your project and bring it to life together.",
+    "contactMe": "Contact Me",
+    "footer": "Web & Mobile Developer",
+    "nav": {
+      "home": "Home",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "projects": {
+      "plotsTerrasse": {
+        "subtitle": "Shopify E-commerce",
+        "description": "Complete e-commerce site for selling adjustable pedestals and terrace equipment. Intuitive interface with integrated pedestal calculator, advanced product catalog and optimized purchasing experience for professionals and individuals.",
+        "type": "E-commerce"
+      },
+      "bullehitVape": {
+        "subtitle": "Shopify E-commerce",
+        "description": "Premium online store for vape products. Immersive design with a dark and colorful visual universe, product catalog with advanced filters, and physical store integration in Lyon 7th. Polished user experience from browsing to checkout.",
+        "type": "E-commerce"
+      },
+      "dewetoAgency": {
+        "subtitle": "Agency Showcase Site",
+        "description": "Showcase site for my personal web agency. Modern and clean design with fluid animations, services presentation, portfolio of projects and contact form. Optimized for conversion and SEO.",
+        "type": "Showcase"
+      }
+    }
+  }
+}
